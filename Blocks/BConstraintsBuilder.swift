@@ -40,39 +40,37 @@ public struct BConstraintsBuilder {
         views[name] = view
     }
     
-    public func addView(_ view: AnyObject, name: String) -> BConstraintsBuilder {
-        if let view = view as? UIView {
+    public func add(view: AnyObject, name: String) -> BConstraintsBuilder {
+        if let view = view as? UIView, view.translatesAutoresizingMaskIntoConstraints != false {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
-        var const = self
-        const.views[name] = view
-        return const
+        return addAlias(view: view, name: name)
     }
     
     // translatesAutoresizingMaskIntoConstraints 변경없이 VFS에서 viewname 만 필요한 경우가 있음
-    public func addOnlyViewName(_ view: AnyObject, name: String) -> BConstraintsBuilder {
+    public func addAlias(view: AnyObject, name: String) -> BConstraintsBuilder {
         var const = self
         const.views[name] = view
         return const
     }
     
-    public func addMetricValue(_ value: AnyObject, name: String) -> BConstraintsBuilder {
+    public func add(metric value: AnyObject, name: String) -> BConstraintsBuilder {
         var const = self
         const.metrics[name] = value
         return const
     }
     
-    public func addVFS(_ vfs: String, options: NSLayoutFormatOptions) -> BConstraintsBuilder {
+    public func add(vfs: String, options: NSLayoutFormatOptions) -> BConstraintsBuilder {
         var const = self
         let c = NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: metrics, views: views)
         const.constraints = const.constraints + c
         return const
     }
     
-    public func addVFS(_ vfsArray: String...) -> BConstraintsBuilder {
+    public func add(vfs: String...) -> BConstraintsBuilder {
         var const = self
-        for vfs in vfsArray {
-            const = const.addVFS(vfs, options: NSLayoutFormatOptions(rawValue: 0))
+        for vfs in vfs {
+            const = const.add(vfs: vfs, options: NSLayoutFormatOptions(rawValue: 0))
         }
         return const
     }
