@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
 * this is first release.
+* don't use anyone yet.
                    DESC
 
   s.homepage     = "https://github.com/pisrc/blocks-swift"
