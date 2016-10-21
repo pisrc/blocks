@@ -44,7 +44,7 @@
                                             <frame key="frameInset" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yns-ac-Rtt">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Segue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yns-ac-Rtt">
                                                     <frame key="frameInset" minX="15" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -53,6 +53,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HaH-3e-UtZ" kind="show" id="GNc-je-7WX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jOF-Zm-Iqe" style="IBUITableViewCellStyleDefault" id="A3i-DK-GtN">
                                         <rect key="frame" x="0.0" y="152" width="375" height="44"/>
@@ -132,7 +135,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egG-Hj-SZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="-628"/>
+            <point key="canvasLocation" x="4212" y="-645"/>
+        </scene>
+        <!--Segue View Controller-->
+        <scene sceneID="IJs-Pj-YSy">
+            <objects>
+                <viewController id="HaH-3e-UtZ" customClass="SegueViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6lY-rS-2GJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="m8S-hV-Tue"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tSc-Di-rf1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGl-Ar-Fdj">
+                                <frame key="frameInset" minX="34" minY="102" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="modal"/>
+                                <connections>
+                                    <action selector="showModal:" destination="HaH-3e-UtZ" eventType="touchUpInside" id="3N5-Df-y1r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PgG-U7-ZM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4943" y="-280"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3QD-m2-lRD">
+            <objects>
+                <viewController storyboardIdentifier="new" id="UUB-8Z-fz8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CyA-n7-vbR"/>
+                        <viewControllerLayoutGuide type="bottom" id="oqZ-Bd-WZN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9DN-OV-Fqq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="new" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-aL-WPv">
+                                <frame key="frameInset" minX="31" minY="64" width="32" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQi-6d-S3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5690" y="-280"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eoZ-i3-SUx">

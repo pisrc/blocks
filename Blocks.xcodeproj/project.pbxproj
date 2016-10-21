@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940924791DB9B36B00B54CAD /* SegueViewController.swift */; };
+		9409247E1DB9B57500B54CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */; };
 		9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEB61DAD3EFC00AA920D /* AppDelegate.swift */; };
 		9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEB81DAD3EFC00AA920D /* ViewController.swift */; };
 		9473BEBC1DAD3EFC00AA920D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9473BEBA1DAD3EFC00AA920D /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		940924791DB9B36B00B54CAD /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
+		9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Example/UIViewController+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		9473BEB41DAD3EFC00AA920D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9473BEB61DAD3EFC00AA920D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9473BEB81DAD3EFC00AA920D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				9473BEC21DAD3EFC00AA920D /* LaunchScreen.storyboard */,
 				9473BEC51DAD3EFC00AA920D /* Info.plist */,
 				9473BEBD1DAD3EFC00AA920D /* Example.xcdatamodeld */,
+				940924791DB9B36B00B54CAD /* SegueViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 		9473BECD1DAD49C200AA920D /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */,
 				9473BECA1DAD40F700AA920D /* ConstraintViewController.swift in Sources */,
 				9473BEBF1DAD3EFC00AA920D /* Example.xcdatamodeld in Sources */,
+				9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */,
 				9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9409247E1DB9B57500B54CAD /* UIViewController+Extension.swift in Sources */,
 				9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */,
 				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
@@ -599,6 +607,7 @@
 				9473BEC81DAD3EFC00AA920D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94EA5AE21DAD332F006E5517 /* Build configuration list for PBXProject "Blocks" */ = {
 			isa = XCConfigurationList;
