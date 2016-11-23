@@ -23,7 +23,9 @@
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
 		9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE01DAD4A6000AA920D /* BManagedObject.swift */; };
 		9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */; };
-		9495908E1DE539E600C3CCAE /* BCylinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495908D1DE539E600C3CCAE /* BCylinder.swift */; };
+		9495908E1DE539E600C3CCAE /* CylinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495908D1DE539E600C3CCAE /* CylinderViewController.swift */; };
+		949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590901DE5760100C3CCAE /* CylinderExamViewController.swift */; };
+		949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590921DE594A200C3CCAE /* NumberViewController.swift */; };
 		94EA5AF21DAD3330006E5517 /* Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EA5AE81DAD3330006E5517 /* Blocks.framework */; };
 		94EA5AF71DAD3330006E5517 /* BlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA5AF61DAD3330006E5517 /* BlocksTests.swift */; };
 		94EA5AF91DAD3330006E5517 /* Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 94EA5AEB1DAD3330006E5517 /* Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,7 +67,9 @@
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BEE01DAD4A6000AA920D /* BManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BManagedObject.swift; sourceTree = "<group>"; };
 		9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BConstraintsBuilder.swift; sourceTree = "<group>"; };
-		9495908D1DE539E600C3CCAE /* BCylinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCylinder.swift; sourceTree = "<group>"; };
+		9495908D1DE539E600C3CCAE /* CylinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderViewController.swift; sourceTree = "<group>"; };
+		949590901DE5760100C3CCAE /* CylinderExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderExamViewController.swift; sourceTree = "<group>"; };
+		949590921DE594A200C3CCAE /* NumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		94EA5AE81DAD3330006E5517 /* Blocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EA5AEB1DAD3330006E5517 /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
 		94EA5AEC1DAD3330006E5517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				9473BEC51DAD3EFC00AA920D /* Info.plist */,
 				9473BEBD1DAD3EFC00AA920D /* Example.xcdatamodeld */,
 				940924791DB9B36B00B54CAD /* SegueViewController.swift */,
+				949590901DE5760100C3CCAE /* CylinderExamViewController.swift */,
+				949590921DE594A200C3CCAE /* NumberViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -155,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */,
-				9495908D1DE539E600C3CCAE /* BCylinder.swift */,
+				9495908D1DE539E600C3CCAE /* CylinderViewController.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -350,9 +356,11 @@
 			files = (
 				9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */,
 				9473BECA1DAD40F700AA920D /* ConstraintViewController.swift in Sources */,
+				949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */,
 				9473BEBF1DAD3EFC00AA920D /* Example.xcdatamodeld in Sources */,
 				9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */,
 				9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */,
+				949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +372,7 @@
 				9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */,
 				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
-				9495908E1DE539E600C3CCAE /* BCylinder.swift in Sources */,
+				9495908E1DE539E600C3CCAE /* CylinderViewController.swift in Sources */,
 				9473BED91DAD4A2400AA920D /* PopupTransitionDelegate.swift in Sources */,
 				9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */,
 				9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */,

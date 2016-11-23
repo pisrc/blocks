@@ -1,25 +1,16 @@
 //
-//  SegueViewController.swift
+//  NumberViewController.swift
 //  Blocks
 //
-//  Created by ryan on 10/21/16.
+//  Created by ryan on 23/11/2016.
 //  Copyright © 2016 pi. All rights reserved.
 //
 
 import UIKit
-import Blocks
 
-class SegueViewController: UIViewController {
+class NumberViewController: UIViewController {
 
-    @IBAction func showModal(_ sender: AnyObject) {
-        BSegue(
-            source: self,
-            destination: { () -> UIViewController in
-                return UIViewController.viewController(fromStoryboard: "Main", identifier: "new")
-            }) { () -> BSegueStyle in
-                return BSegueStyle.presentModally(animated: true)
-            }.perform()
-    }
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
