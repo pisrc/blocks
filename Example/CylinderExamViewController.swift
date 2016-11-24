@@ -16,20 +16,30 @@ class CylinderExamViewController: CylinderViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        cylinderView.delegate = self
     }
     
 }
 
-extension CylinderViewController: CylinderViewDelegate {
-    public func cylinderView(bufferFor index: CylinderBufferIndex) -> UIViewController {
-        switch index {
-        case .buffer0:
-            return UIViewController.viewController(fromStoryboard: "Main", identifier: "number")
-        case .buffer1:
-            return UIViewController.viewController(fromStoryboard: "Main", identifier: "number")
-        case .buffer2:
-            return UIViewController.viewController(fromStoryboard: "Main", identifier: "number")
-        }
+extension CylinderExamViewController: CylinderViewDelegate {
+    public func cylinderViewNumberOfPages(_ cylinderView: CylinderView) -> Int {
+        return datas.count
     }
+    
+    public func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView {
+        let v = UIView()
+        if index == 0 {
+            v.backgroundColor = UIColor.gray
+        } else if index == 1 {
+            v.backgroundColor = UIColor.brown
+        } else if index == 2 {
+            v.backgroundColor = UIColor.cyan
+        }
+        return v
+    }
+    
+    public func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int) {
+        print("didChangeViewIndex: \(didChangeViewIndex)")
+    }
+    
 }
