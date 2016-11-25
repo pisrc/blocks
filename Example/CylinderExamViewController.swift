@@ -39,4 +39,8 @@ extension CylinderExamViewController: CylinderViewDelegate {
         print("didChangeViewIndex: \(didChangeViewIndex)")
     }
     
+    public func cylinderViewStartIndex(_ cylinderView: CylinderView) -> Int {
+        return 7
+    }
+    
 }

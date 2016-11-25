@@ -8,11 +8,11 @@
 
 import UIKit
 
-@objc
 public protocol CylinderViewDelegate: class {
     func cylinderViewNumberOfPages(_ cylinderView: CylinderView) -> Int
-    @objc optional func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView
-    @objc optional func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int)
+    func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView
+    func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int)
+    func cylinderViewStartIndex(_ cylinderView: CylinderView) -> Int
 }
 
 public class CylinderPage: UIView {
@@ -61,15 +61,20 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     
     public weak var delegate: CylinderViewDelegate? {
         didSet {
-            if let view = delegate?.cylinderView?(self, viewAt: leftChild.index) {
-                leftChild.set(view: view, index: leftChild.index)
+            
+            guard let delegate = delegate else {
+                return
             }
-            if let view = delegate?.cylinderView?(self, viewAt: centerChild.index) {
-                centerChild.set(view: view, index: centerChild.index)
-            }
-            if let view = delegate?.cylinderView?(self, viewAt: rightChild.index) {
-                rightChild.set(view: view, index: rightChild.index)
-            }
+            
+            let count = delegate.cylinderViewNumberOfPages(self)
+            let startIndex = delegate.cylinderViewStartIndex(self)
+            leftChild.index = startIndex
+            centerChild.index = leftChild.index.rotate(max: count - 1)
+            rightChild.index = centerChild.index.rotate(max: count - 1)
+            
+            leftChild.set(view: delegate.cylinderView(self, viewAt: leftChild.index), index: leftChild.index)
+            centerChild.set(view: delegate.cylinderView(self, viewAt: centerChild.index), index: centerChild.index)
+            rightChild.set(view: delegate.cylinderView(self, viewAt: rightChild.index), index: rightChild.index)
         }
     }
     
@@ -132,7 +137,7 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.cylinderView?(self, didChangeViewIndex: currentPage - 1)
+        delegate?.cylinderView(self, didChangeViewIndex: currentPage - 1)
     }
     
     private func centering(child: Int) {
@@ -159,12 +164,9 @@ public class CylinderView: UIView, UIScrollViewDelegate {
             let count = delegate.cylinderViewNumberOfPages(self)
             let leftIndex = centerChild.index.rotateBack(max: count - 1)
             let rightIndex = centerChild.index.rotate(max: count - 1)
-            if let view = delegate.cylinderView?(self, viewAt: leftIndex) {
-                leftChild.set(view: view, index: leftIndex)
-            }
-            if let view = delegate.cylinderView?(self, viewAt: rightIndex) {
-                rightChild.set(view: view, index: rightIndex)
-            }
+            
+            leftChild.set(view: delegate.cylinderView(self, viewAt: leftIndex), index: leftIndex)
+            rightChild.set(view: delegate.cylinderView(self, viewAt: rightIndex), index: rightIndex)
         }
         
         scrollView.contentOffset = CGPoint(x: frame.width, y: 0)
