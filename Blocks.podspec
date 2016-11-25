@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Blocks"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "Blocks has a few helper library for iOS App."
 
   # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
 * don't use anyone yet.
                    DESC
 
-  s.homepage     = "https://github.com/pisrc/blocks-swift"
+  s.homepage     = "https://github.com/pisrc/blocks"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
