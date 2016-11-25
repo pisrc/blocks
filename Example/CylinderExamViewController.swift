@@ -28,7 +28,7 @@ extension CylinderExamViewController: CylinderViewDelegate {
     
     public func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView {
         
-        guard let vc = UIViewController.viewController(fromStoryboard: "Main", identifier: "number") as? NumberViewController else {
+        guard let vc = UIViewController.fromStoryboard(name: "Main", identifier: "number") as? NumberViewController else {
             return UIView()
         }
         vc.number = index

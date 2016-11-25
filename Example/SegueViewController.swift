@@ -15,7 +15,7 @@ class SegueViewController: UIViewController {
         BSegue(
             source: self,
             destination: { () -> UIViewController in
-                return UIViewController.viewController(fromStoryboard: "Main", identifier: "new")
+                return UIViewController.fromStoryboard(name: "Main", identifier: "new")
             }) { () -> BSegueStyle in
                 return BSegueStyle.presentModally(animated: true)
             }.perform()
