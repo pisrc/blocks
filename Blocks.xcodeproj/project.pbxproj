@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940924791DB9B36B00B54CAD /* SegueViewController.swift */; };
-		9409247E1DB9B57500B54CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */; };
-		94212F911DE6EC59005CF2DA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94212F901DE6EC59005CF2DA /* UIView+Extension.swift */; };
+		942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942649A11DE7CED900F4A535 /* UIView+Extension.swift */; };
+		942649A41DE7CED900F4A535 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */; };
+		942649A61DE7CF5B00F4A535 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942649A51DE7CF5B00F4A535 /* Int+Extension.swift */; };
 		9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEB61DAD3EFC00AA920D /* AppDelegate.swift */; };
 		9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEB81DAD3EFC00AA920D /* ViewController.swift */; };
 		9473BEBC1DAD3EFC00AA920D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9473BEBA1DAD3EFC00AA920D /* Main.storyboard */; };
@@ -24,7 +25,7 @@
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
 		9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE01DAD4A6000AA920D /* BManagedObject.swift */; };
 		9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */; };
-		9495908E1DE539E600C3CCAE /* Cylinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495908D1DE539E600C3CCAE /* Cylinder.swift */; };
+		9495908E1DE539E600C3CCAE /* CylinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495908D1DE539E600C3CCAE /* CylinderView.swift */; };
 		949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590901DE5760100C3CCAE /* CylinderExamViewController.swift */; };
 		949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590921DE594A200C3CCAE /* NumberViewController.swift */; };
 		94EA5AF21DAD3330006E5517 /* Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EA5AE81DAD3330006E5517 /* Blocks.framework */; };
@@ -51,8 +52,9 @@
 
 /* Begin PBXFileReference section */
 		940924791DB9B36B00B54CAD /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
-		9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Example/UIViewController+Extension.swift"; sourceTree = SOURCE_ROOT; };
-		94212F901DE6EC59005CF2DA /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Example/UIView+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		942649A11DE7CED900F4A535 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		942649A51DE7CF5B00F4A535 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		9473BEB41DAD3EFC00AA920D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9473BEB61DAD3EFC00AA920D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9473BEB81DAD3EFC00AA920D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +71,7 @@
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BEE01DAD4A6000AA920D /* BManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BManagedObject.swift; sourceTree = "<group>"; };
 		9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BConstraintsBuilder.swift; sourceTree = "<group>"; };
-		9495908D1DE539E600C3CCAE /* Cylinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cylinder.swift; sourceTree = "<group>"; };
+		9495908D1DE539E600C3CCAE /* CylinderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderView.swift; sourceTree = "<group>"; };
 		949590901DE5760100C3CCAE /* CylinderExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderExamViewController.swift; sourceTree = "<group>"; };
 		949590921DE594A200C3CCAE /* NumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		94EA5AE81DAD3330006E5517 /* Blocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +145,9 @@
 		9473BECD1DAD49C200AA920D /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				9409247D1DB9B57500B54CAD /* UIViewController+Extension.swift */,
-				94212F901DE6EC59005CF2DA /* UIView+Extension.swift */,
+				942649A11DE7CED900F4A535 /* UIView+Extension.swift */,
+				942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */,
+				942649A51DE7CF5B00F4A535 /* Int+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -164,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */,
-				9495908D1DE539E600C3CCAE /* Cylinder.swift */,
+				9495908D1DE539E600C3CCAE /* CylinderView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -371,15 +374,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9409247E1DB9B57500B54CAD /* UIViewController+Extension.swift in Sources */,
 				9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */,
 				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
-				9495908E1DE539E600C3CCAE /* Cylinder.swift in Sources */,
+				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,
+				9495908E1DE539E600C3CCAE /* CylinderView.swift in Sources */,
+				942649A61DE7CF5B00F4A535 /* Int+Extension.swift in Sources */,
 				9473BED91DAD4A2400AA920D /* PopupTransitionDelegate.swift in Sources */,
 				9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */,
 				9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */,
-				94212F911DE6EC59005CF2DA /* UIView+Extension.swift in Sources */,
+				942649A41DE7CED900F4A535 /* UIViewController+Extension.swift in Sources */,
 				9473BED31DAD49DF00AA920D /* delay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

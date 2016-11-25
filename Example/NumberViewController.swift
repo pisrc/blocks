@@ -12,10 +12,12 @@ class NumberViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     
+    var number: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        label.text = "\(number)"
     }
 
     override func didReceiveMemoryWarning() {

@@ -27,15 +27,12 @@ extension CylinderExamViewController: CylinderViewDelegate {
     }
     
     public func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView {
-        let v = UIView()
-        if index == 0 {
-            v.backgroundColor = UIColor.gray
-        } else if index == 1 {
-            v.backgroundColor = UIColor.brown
-        } else if index == 2 {
-            v.backgroundColor = UIColor.cyan
+        
+        guard let vc = UIViewController.viewController(fromStoryboard: "Main", identifier: "number") as? NumberViewController else {
+            return UIView()
         }
-        return v
+        vc.number = index
+        return vc.view
     }
     
     public func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int) {
