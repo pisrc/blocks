@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Blocks
 
 public protocol CylinderViewDelegate: class {
     func cylinderViewNumberOfPages(_ cylinderView: CylinderView) -> Int

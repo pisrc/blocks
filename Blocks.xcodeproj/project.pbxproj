@@ -25,9 +25,12 @@
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
 		9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE01DAD4A6000AA920D /* BManagedObject.swift */; };
 		9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */; };
-		9495908E1DE539E600C3CCAE /* CylinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495908D1DE539E600C3CCAE /* CylinderView.swift */; };
 		949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590901DE5760100C3CCAE /* CylinderExamViewController.swift */; };
 		949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590921DE594A200C3CCAE /* NumberViewController.swift */; };
+		94AAB4BA1DE99322003BA456 /* Cylinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 94AAB4B81DE99322003BA456 /* Cylinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94AAB4BD1DE99322003BA456 /* Cylinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AAB4B61DE99322003BA456 /* Cylinder.framework */; };
+		94AAB4BE1DE99322003BA456 /* Cylinder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94AAB4B61DE99322003BA456 /* Cylinder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94AAB4C51DE993E5003BA456 /* CylinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AAB4C41DE993E5003BA456 /* CylinderView.swift */; };
 		94EA5AF21DAD3330006E5517 /* Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EA5AE81DAD3330006E5517 /* Blocks.framework */; };
 		94EA5AF71DAD3330006E5517 /* BlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA5AF61DAD3330006E5517 /* BlocksTests.swift */; };
 		94EA5AF91DAD3330006E5517 /* Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 94EA5AEB1DAD3330006E5517 /* Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +38,20 @@
 
 /* Begin PBXContainerItemProxy section */
 		9473BEE21DAD4D7A00AA920D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94EA5ADF1DAD332F006E5517 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94EA5AE71DAD3330006E5517;
+			remoteInfo = Blocks;
+		};
+		94AAB4BB1DE99322003BA456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94EA5ADF1DAD332F006E5517 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94AAB4B51DE99322003BA456;
+			remoteInfo = Cylinder;
+		};
+		94AAB4C61DE99427003BA456 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94EA5ADF1DAD332F006E5517 /* Project object */;
 			proxyType = 1;
@@ -49,6 +66,20 @@
 			remoteInfo = Blocks;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		94AAB4C31DE99322003BA456 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				94AAB4BE1DE99322003BA456 /* Cylinder.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		940924791DB9B36B00B54CAD /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
@@ -71,9 +102,12 @@
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BEE01DAD4A6000AA920D /* BManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BManagedObject.swift; sourceTree = "<group>"; };
 		9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BConstraintsBuilder.swift; sourceTree = "<group>"; };
-		9495908D1DE539E600C3CCAE /* CylinderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderView.swift; sourceTree = "<group>"; };
 		949590901DE5760100C3CCAE /* CylinderExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderExamViewController.swift; sourceTree = "<group>"; };
 		949590921DE594A200C3CCAE /* NumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
+		94AAB4B61DE99322003BA456 /* Cylinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cylinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94AAB4B81DE99322003BA456 /* Cylinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cylinder.h; sourceTree = "<group>"; };
+		94AAB4B91DE99322003BA456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94AAB4C41DE993E5003BA456 /* CylinderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderView.swift; sourceTree = "<group>"; };
 		94EA5AE81DAD3330006E5517 /* Blocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EA5AEB1DAD3330006E5517 /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
 		94EA5AEC1DAD3330006E5517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +118,14 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		9473BEB11DAD3EFC00AA920D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94AAB4BD1DE99322003BA456 /* Cylinder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94AAB4B21DE99322003BA456 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,9 +209,18 @@
 			isa = PBXGroup;
 			children = (
 				9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */,
-				9495908D1DE539E600C3CCAE /* CylinderView.swift */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		94AAB4B71DE99322003BA456 /* Cylinder */ = {
+			isa = PBXGroup;
+			children = (
+				94AAB4C41DE993E5003BA456 /* CylinderView.swift */,
+				94AAB4B81DE99322003BA456 /* Cylinder.h */,
+				94AAB4B91DE99322003BA456 /* Info.plist */,
+			);
+			path = Cylinder;
 			sourceTree = "<group>";
 		};
 		94EA5ADE1DAD332F006E5517 = {
@@ -178,6 +229,7 @@
 				94EA5AEA1DAD3330006E5517 /* Blocks */,
 				94EA5AF51DAD3330006E5517 /* BlocksTests */,
 				9473BEB51DAD3EFC00AA920D /* Example */,
+				94AAB4B71DE99322003BA456 /* Cylinder */,
 				94EA5AE91DAD3330006E5517 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,6 +240,7 @@
 				94EA5AE81DAD3330006E5517 /* Blocks.framework */,
 				94EA5AF11DAD3330006E5517 /* BlocksTests.xctest */,
 				9473BEB41DAD3EFC00AA920D /* Example.app */,
+				94AAB4B61DE99322003BA456 /* Cylinder.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,6 +271,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		94AAB4B31DE99322003BA456 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94AAB4BA1DE99322003BA456 /* Cylinder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94EA5AE51DAD3330006E5517 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,16 +297,37 @@
 				9473BEB01DAD3EFC00AA920D /* Sources */,
 				9473BEB11DAD3EFC00AA920D /* Frameworks */,
 				9473BEB21DAD3EFC00AA920D /* Resources */,
+				94AAB4C31DE99322003BA456 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				9473BEE31DAD4D7A00AA920D /* PBXTargetDependency */,
+				94AAB4BC1DE99322003BA456 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
 			productReference = 9473BEB41DAD3EFC00AA920D /* Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		94AAB4B51DE99322003BA456 /* Cylinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94AAB4C21DE99322003BA456 /* Build configuration list for PBXNativeTarget "Cylinder" */;
+			buildPhases = (
+				94AAB4B11DE99322003BA456 /* Sources */,
+				94AAB4B21DE99322003BA456 /* Frameworks */,
+				94AAB4B31DE99322003BA456 /* Headers */,
+				94AAB4B41DE99322003BA456 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94AAB4C71DE99427003BA456 /* PBXTargetDependency */,
+			);
+			name = Cylinder;
+			productName = Cylinder;
+			productReference = 94AAB4B61DE99322003BA456 /* Cylinder.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		94EA5AE71DAD3330006E5517 /* Blocks */ = {
 			isa = PBXNativeTarget;
@@ -297,6 +379,11 @@
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
 					};
+					94AAB4B51DE99322003BA456 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
 					94EA5AE71DAD3330006E5517 = {
 						CreatedOnToolsVersion = 8.0;
 						LastSwiftMigration = 0800;
@@ -322,6 +409,7 @@
 			projectRoot = "";
 			targets = (
 				94EA5AE71DAD3330006E5517 /* Blocks */,
+				94AAB4B51DE99322003BA456 /* Cylinder */,
 				94EA5AF01DAD3330006E5517 /* BlocksTests */,
 				9473BEB31DAD3EFC00AA920D /* Example */,
 			);
@@ -336,6 +424,13 @@
 				9473BEC41DAD3EFC00AA920D /* LaunchScreen.storyboard in Resources */,
 				9473BEC11DAD3EFC00AA920D /* Assets.xcassets in Resources */,
 				9473BEBC1DAD3EFC00AA920D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94AAB4B41DE99322003BA456 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +465,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94AAB4B11DE99322003BA456 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94AAB4C51DE993E5003BA456 /* CylinderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94EA5AE31DAD3330006E5517 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,7 +481,6 @@
 				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
 				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,
-				9495908E1DE539E600C3CCAE /* CylinderView.swift in Sources */,
 				942649A61DE7CF5B00F4A535 /* Int+Extension.swift in Sources */,
 				9473BED91DAD4A2400AA920D /* PopupTransitionDelegate.swift in Sources */,
 				9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */,
@@ -403,6 +505,16 @@
 			isa = PBXTargetDependency;
 			target = 94EA5AE71DAD3330006E5517 /* Blocks */;
 			targetProxy = 9473BEE21DAD4D7A00AA920D /* PBXContainerItemProxy */;
+		};
+		94AAB4BC1DE99322003BA456 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94AAB4B51DE99322003BA456 /* Cylinder */;
+			targetProxy = 94AAB4BB1DE99322003BA456 /* PBXContainerItemProxy */;
+		};
+		94AAB4C71DE99427003BA456 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94EA5AE71DAD3330006E5517 /* Blocks */;
+			targetProxy = 94AAB4C61DE99427003BA456 /* PBXContainerItemProxy */;
 		};
 		94EA5AF41DAD3330006E5517 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -434,6 +546,7 @@
 		9473BEC71DAD3EFC00AA920D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -446,6 +559,7 @@
 		9473BEC81DAD3EFC00AA920D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -537,11 +651,73 @@
 		94806B131DD59E8E00F51E1D /* English */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.musicpang.blocks.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = English;
+		};
+		94AAB4BF1DE99322003BA456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cylinder/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.musicpang.blocks.Cylinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		94AAB4C01DE99322003BA456 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cylinder/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.musicpang.blocks.Cylinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		94AAB4C11DE99322003BA456 /* English */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cylinder/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.musicpang.blocks.Cylinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = English;
@@ -724,6 +900,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		94AAB4C21DE99322003BA456 /* Build configuration list for PBXNativeTarget "Cylinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94AAB4BF1DE99322003BA456 /* Debug */,
+				94AAB4C01DE99322003BA456 /* Release */,
+				94AAB4C11DE99322003BA456 /* English */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		94EA5AE21DAD332F006E5517 /* Build configuration list for PBXProject "Blocks" */ = {
 			isa = XCConfigurationList;

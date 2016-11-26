@@ -8,6 +8,7 @@
 
 import UIKit
 import Blocks
+import Cylinder
 
 class CylinderExamViewController: CylinderViewController {
 
