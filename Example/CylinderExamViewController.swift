@@ -70,8 +70,8 @@ extension CylinderExamViewController: CylinderViewDelegate {
         v.label.sizeToFit()
         return v
     }
-    public func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int) {
-        print("didChangeViewIndex: \(didChangeViewIndex)")
+    public func cylinderView(_ cylinderView: CylinderView, didChange view: UIView) {
+        
     }
     public func cylinderViewStartIndex(_ cylinderView: CylinderView) -> Int {
         return 7
