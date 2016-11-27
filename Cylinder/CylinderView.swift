@@ -185,6 +185,7 @@ public class CylinderView: UIView, UIScrollViewDelegate {
         guard let delegate = delegate else {
             return
         }
+        
         // 시작 index 확인
         leftChild.index = delegate.cylinderViewStartIndex(self)
         
