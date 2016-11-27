@@ -12,33 +12,25 @@ import Blocks
 public protocol CylinderViewDelegate: class {
     func cylinderViewNumberOfPages(_ cylinderView: CylinderView) -> Int
     func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView
-    func cylinderView(_ cylinderView: CylinderView, didChangeViewIndex: Int)
+    func cylinderView(_ cylinderView: CylinderView, didChange view: UIView)
     func cylinderViewStartIndex(_ cylinderView: CylinderView) -> Int
 }
 
 public class CylinderPage: UIView {
     var index = 0
-    
     public func set(view: UIView, index: Int) {
         self.index = index
-        
-        set(child: view)
-        let consts = BConstraintsBuilder(view: view, name: "view")
-            .add(vfs: "H:|[view]|", "V:|[view]|")
-            .constraints
-        removeConstraints(constraints)
-        addConstraints(consts)
+        self.set(child: view)
     }
 }
 
 public class CylinderView: UIView, UIScrollViewDelegate {
- 
     
     private var scrollView: UIScrollView!
     
-    public var child1 = CylinderPage()
-    public var child2 = CylinderPage()
-    public var child3 = CylinderPage()
+    private var child1 = CylinderPage()
+    private var child2 = CylinderPage()
+    private var child3 = CylinderPage()
     private var leftChild: CylinderPage! {
         didSet {
             leftChild.frame.origin = CGPoint(x: 0, y: 0)
@@ -73,9 +65,7 @@ public class CylinderView: UIView, UIScrollViewDelegate {
             centerChild.index = leftChild.index.rotate(max: count - 1)
             rightChild.index = centerChild.index.rotate(max: count - 1)
             
-            leftChild.set(view: delegate.cylinderView(self, viewAt: leftChild.index), index: leftChild.index)
-            centerChild.set(view: delegate.cylinderView(self, viewAt: centerChild.index), index: centerChild.index)
-            rightChild.set(view: delegate.cylinderView(self, viewAt: rightChild.index), index: rightChild.index)
+            reloadData()
         }
     }
     
@@ -96,30 +86,33 @@ public class CylinderView: UIView, UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         scrollView.isDirectionalLockEnabled = true
         
-        scrollView.addSubview(child1)
-        scrollView.addSubview(child2)
-        scrollView.addSubview(child3)
+        scrollView.addSubview(leftChild)
+        scrollView.addSubview(centerChild)
+        scrollView.addSubview(rightChild)
         
         addSubview(scrollView)
-        
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         
         scrollView.frame = rect
         scrollView.contentSize = CGSize(width: rect.width * 3, height: rect.height)
         
-        pageWidth = rect.size.width
+        pageWidth = rect.width
         
-        leftChild.frame = CGRect(x: 0, y: 0, width: pageWidth, height: rect.size.height)
-        centerChild.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: rect.size.height)
-        rightChild.frame = CGRect(x: pageWidth * 2, y: 0, width: pageWidth, height: rect.size.height)
+        leftChild.frame = CGRect(x: 0, y: 0, width: pageWidth, height: rect.height)
+        centerChild.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: rect.height)
+        rightChild.frame = CGRect(x: pageWidth * 2, y: 0, width: pageWidth, height: rect.height)
     }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        draw(frame)
+    }
+    
     
     // MARK: - UIScrollViewDelegate
     
@@ -138,7 +131,22 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.cylinderView(self, didChangeViewIndex: currentPage - 1)
+        switch currentPage {
+        case 1:
+            if let view = leftChild.subviews.first {
+                delegate?.cylinderView(self, didChange: view)
+            }
+        case 2:
+            if let view = centerChild.subviews.first {
+                delegate?.cylinderView(self, didChange: view)
+            }
+        case 3:
+            if let view = rightChild.subviews.first {
+                delegate?.cylinderView(self, didChange: view)
+            }
+        default:
+            break
+        }
     }
     
     private func centering(child: Int) {
@@ -173,24 +181,19 @@ public class CylinderView: UIView, UIScrollViewDelegate {
         scrollView.contentOffset = CGPoint(x: frame.width, y: 0)
     }
     
-}
-
-open class CylinderViewController: UIViewController {
-    
-    public var cylinderView: CylinderView!
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
+    public func reloadData() {
+        guard let delegate = delegate else {
+            return
+        }
+        // 시작 index 확인
+        leftChild.index = delegate.cylinderViewStartIndex(self)
         
-        automaticallyAdjustsScrollViewInsets = false
+        leftChild.set(view: delegate.cylinderView(self, viewAt: leftChild.index), index: leftChild.index)
+        centerChild.set(view: delegate.cylinderView(self, viewAt: centerChild.index), index: centerChild.index)
+        rightChild.set(view: delegate.cylinderView(self, viewAt: rightChild.index), index: rightChild.index)
         
-        cylinderView = CylinderView()
-        view.addSubview(cylinderView)
-        
-        let consts = BConstraintsBuilder(view: cylinderView, name: "cylinderView")
-            .add(vfs: "H:|[cylinderView]|", "V:|[cylinderView]|")
-            .constraints
-        view.addConstraints(consts)
+        if let view = leftChild.subviews.first {
+            delegate.cylinderView(self, didChange: view)
+        }
     }
-
 }

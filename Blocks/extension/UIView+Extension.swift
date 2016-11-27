@@ -10,6 +10,9 @@ import UIKit
 
 extension UIView {
     public func set(child: UIView) {
+        
+        child.clipsToBounds = true
+        
         subviews.forEach { (child) in
             child.removeFromSuperview()
         }
@@ -18,6 +21,7 @@ extension UIView {
         let consts = BConstraintsBuilder(view: child, name: "child")
             .add(vfs: "H:|[child]|", "V:|[child]|")
             .constraints
+        removeConstraints(constraints)
         addConstraints(consts)
     }
 }
