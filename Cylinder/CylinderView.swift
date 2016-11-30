@@ -13,7 +13,6 @@ public protocol CylinderViewDelegate: class {
     func cylinderViewNumberOfPages(_ cylinderView: CylinderView) -> Int
     func cylinderView(_ cylinderView: CylinderView, viewAt index: Int) -> UIView
     func cylinderView(_ cylinderView: CylinderView, didChange view: UIView)
-    func cylinderViewStartIndex(_ cylinderView: CylinderView) -> Int
 }
 
 public class CylinderPage: UIView {
@@ -51,7 +50,6 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     private var currentPage: Int {
         return Int((scrollView.contentOffset.x + (0.5 * scrollView.frame.size.width)) / scrollView.frame.size.width) + 1
     }
-    
     public weak var delegate: CylinderViewDelegate? {
         didSet {
             
@@ -60,8 +58,7 @@ public class CylinderView: UIView, UIScrollViewDelegate {
             }
             
             let count = delegate.cylinderViewNumberOfPages(self)
-            let startIndex = delegate.cylinderViewStartIndex(self)
-            leftChild.index = startIndex
+            leftChild.index = 0
             centerChild.index = leftChild.index.rotate(max: count - 1)
             rightChild.index = centerChild.index.rotate(max: count - 1)
             
@@ -181,13 +178,13 @@ public class CylinderView: UIView, UIScrollViewDelegate {
         scrollView.contentOffset = CGPoint(x: frame.width, y: 0)
     }
     
-    public func reloadData() {
+    public func reloadData(startIndex: Int = 0) {
         guard let delegate = delegate else {
             return
         }
         
         // 시작 index 확인
-        leftChild.index = delegate.cylinderViewStartIndex(self)
+        leftChild.index = startIndex
         
         leftChild.set(view: delegate.cylinderView(self, viewAt: leftChild.index), index: leftChild.index)
         centerChild.set(view: delegate.cylinderView(self, viewAt: centerChild.index), index: centerChild.index)
