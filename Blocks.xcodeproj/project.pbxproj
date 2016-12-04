@@ -24,7 +24,7 @@
 		9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */; };
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
 		9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE01DAD4A6000AA920D /* BManagedObject.swift */; };
-		9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */; };
+		9473BEE91DAD4EA100AA920D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE81DAD4EA100AA920D /* Constraints.swift */; };
 		949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590901DE5760100C3CCAE /* CylinderExamViewController.swift */; };
 		949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590921DE594A200C3CCAE /* NumberViewController.swift */; };
 		94AAB4BA1DE99322003BA456 /* Cylinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 94AAB4B81DE99322003BA456 /* Cylinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,7 +101,7 @@
 		9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevealLeftHiddenViewSegue.swift; sourceTree = "<group>"; };
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BEE01DAD4A6000AA920D /* BManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BManagedObject.swift; sourceTree = "<group>"; };
-		9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BConstraintsBuilder.swift; sourceTree = "<group>"; };
+		9473BEE81DAD4EA100AA920D /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		949590901DE5760100C3CCAE /* CylinderExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderExamViewController.swift; sourceTree = "<group>"; };
 		949590921DE594A200C3CCAE /* NumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		94AAB4B61DE99322003BA456 /* Cylinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cylinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,7 +208,7 @@
 		9473BECF1DAD49C200AA920D /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				9473BEE81DAD4EA100AA920D /* BConstraintsBuilder.swift */,
+				9473BEE81DAD4EA100AA920D /* Constraints.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9473BEE91DAD4EA100AA920D /* BConstraintsBuilder.swift in Sources */,
+				9473BEE91DAD4EA100AA920D /* Constraints.swift in Sources */,
 				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
 				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,
@@ -909,6 +909,7 @@
 				94AAB4C11DE99322003BA456 /* English */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94EA5AE21DAD332F006E5517 /* Build configuration list for PBXProject "Blocks" */ = {
 			isa = XCConfigurationList;

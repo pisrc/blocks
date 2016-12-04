@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct BConstraint {
+public struct Constraint {
     
     // vfs 로 안되는 부분은 NSLayoutConstraint 를 직접 사용해야함 (center 정렬이 vfs 로 안됨)
     public static func centerH(_ view: UIView, superview: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
@@ -27,51 +27,66 @@ public struct BConstraint {
     }
 }
 
-public struct BConstraintsBuilder {
+public struct ConstraintsBuilder {
     fileprivate var views: [String: AnyObject] = [:]
     fileprivate var metrics: [String: AnyObject] = [:]
+    fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
     fileprivate(set) public var constraints: [NSLayoutConstraint] = []
     
     public init() {
     }
     
     public init(view: UIView, name: String) {
-        view.translatesAutoresizingMaskIntoConstraints = false
         views[name] = view
     }
     
-    public func add(view: AnyObject, name: String) -> BConstraintsBuilder {
-        if let view = view as? UIView, view.translatesAutoresizingMaskIntoConstraints != false {
-            view.translatesAutoresizingMaskIntoConstraints = false
-        }
-        return addAlias(view: view, name: name)
-    }
-    
-    // translatesAutoresizingMaskIntoConstraints 변경없이 VFS에서 viewname 만 필요한 경우가 있음
-    public func addAlias(view: AnyObject, name: String) -> BConstraintsBuilder {
+    public func set(view: AnyObject, name: String) -> ConstraintsBuilder {
         var const = self
         const.views[name] = view
         return const
     }
     
-    public func add(metric value: AnyObject, name: String) -> BConstraintsBuilder {
+    public func set(metric value: AnyObject, name: String) -> ConstraintsBuilder {
         var const = self
         const.metrics[name] = value
         return const
     }
     
-    public func add(vfs: String, options: NSLayoutFormatOptions) -> BConstraintsBuilder {
+    public func set(vfs: String, options: NSLayoutFormatOptions) -> ConstraintsBuilder {
         var const = self
-        let c = NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: metrics, views: views)
-        const.constraints = const.constraints + c
+        const.vfsAndOptions += [(vfs, options)]
         return const
     }
     
-    public func add(vfs: String...) -> BConstraintsBuilder {
+    public func set(vfs: String...) -> ConstraintsBuilder {
         var const = self
-        for vfs in vfs {
-            const = const.add(vfs: vfs, options: NSLayoutFormatOptions(rawValue: 0))
+        vfs.forEach { str in
+            const = const.set(vfs: str, options: NSLayoutFormatOptions(rawValue: 0))
         }
         return const
     }
 }
+
+extension Array where Element: NSLayoutConstraint {
+    init(_ builder: ConstraintsBuilder) {
+        var constraints: [NSLayoutConstraint] = []
+        builder.vfsAndOptions.forEach { (vfs,options) in
+            constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
+        }
+        self.init(constraints as! [Element])
+    }
+}
+
+/*
+extension Sequence where Iterator.Element == NSLayoutConstraint {
+    init(builder: ConstraintsBuilder) {
+        var constraints: [NSLayoutConstraint] = []
+        builder.vfsAndOptions.forEach { (vfs,options) in
+            constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
+        }
+        self.init()
+        //super.init(constraints)
+    }
+    
+}
+*/

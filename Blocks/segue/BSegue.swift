@@ -229,11 +229,12 @@ final class EmbedSegue: UIStoryboardSegue {
         destination.didMove(toParentViewController: source)
         
         // fill
-        let fillConsts = BConstraintsBuilder()
-            .add(view: destination.view, name: "parentview")
-            .add(vfs: "V:|[parentview]|")
-            .add(vfs: "H:|[parentview]|")
-            .constraints
+        let fillConsts = [NSLayoutConstraint](
+            ConstraintsBuilder()
+                .set(view: destination.view, name: "parentview")
+                .set(vfs: "V:|[parentview]|")
+                .set(vfs: "H:|[parentview]|"))
+        
         containerView?.addConstraints(fillConsts)
     }
 }

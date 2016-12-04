@@ -29,11 +29,10 @@ class CylinderExamViewController: UIViewController {
             addSubview(label)
             
             addConstraints(
-                [BConstraint.centerH(label, superview: self), BConstraint.centerV(label, superview: self)])
+                [Constraint.centerH(label, superview: self), Constraint.centerV(label, superview: self)])
             addConstraints(
-                BConstraintsBuilder(view: imageView, name: "imageView")
-                .add(vfs: "H:|[imageView]|", "V:|[imageView]|")
-                .constraints)
+                [NSLayoutConstraint](ConstraintsBuilder(view: imageView, name: "imageView")
+                .set(vfs: "H:|[imageView]|", "V:|[imageView]|")))
         }
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
