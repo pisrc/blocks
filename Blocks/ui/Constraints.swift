@@ -51,9 +51,11 @@ public struct ConstraintsBuilder {
         return const
     }
     
-    public func set(vfs: String, options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
+    public func set(vfs: String..., options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
         var const = self
-        const.vfsAndOptions += [(vfs, options)]
+        vfs.forEach { (str) in
+            const.vfsAndOptions += [(str, options)]
+        }
         return const
     }
 }

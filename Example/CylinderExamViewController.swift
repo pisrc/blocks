@@ -53,8 +53,7 @@ class CylinderExamViewController: UIViewController {
         view.addSubview(cylinderView)
         
         let builder = ConstraintsBuilder(view: cylinderView, name: "cylinderView")
-            .set(vfs: "H:|[cylinderView]|")
-            .set(vfs: "V:|[cylinderView]|")
+            .set(vfs: "H:|[cylinderView]|", "V:|[cylinderView]|")
         let consts = [NSLayoutConstraint](builder)
         view.addConstraints(consts)
     }
