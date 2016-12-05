@@ -18,14 +18,17 @@ class ConstraintViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let consts = [NSLayoutConstraint](ConstraintsBuilder(view: topLabel, name: "top")
+        let builder = ConstraintsBuilder()
+            .set(view: topLabel, name: "top")
             .set(view: centerLabel, name: "center")
             .set(view: bottomLabel, name: "bottom")
             .set(view: topLayoutGuide, name: "tguide")
-            .set(vfs: "V:|[tguide][top(100)][center][bottom(200)]|")
-            .set(vfs: "H:|[top]|")
-            .set(vfs: "H:|[center]|")
-            .set(vfs: "H:|[bottom]|"))
+            .set(vfs:
+                "V:|[tguide][top(100)][center][bottom(200)]|",
+                "H:|[top]|",
+                "H:|[center]|",
+                "H:|[bottom]|")
+        let consts = [NSLayoutConstraint](builder)
         view.addConstraints(consts)
     }
 

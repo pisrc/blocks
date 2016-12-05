@@ -34,46 +34,38 @@ public struct ConstraintsBuilder {
     
     public init() {
     }
-    
-    public init(view: AnyObject, name: String) {
-        views[name] = view
-    }
-    
     public func set(view: AnyObject, name: String) -> ConstraintsBuilder {
-        var const = self
-        const.views[name] = view
-        return const
-    }
-    
-    public func set(metric value: AnyObject, name: String) -> ConstraintsBuilder {
-        var const = self
-        const.metrics[name] = value
-        return const
-    }
-    
-    public func set(vfs: String..., options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
-        var const = self
-        vfs.forEach { (str) in
-            const.vfsAndOptions += [(str, options)]
+        if let view = view as? UIView, view.translatesAutoresizingMaskIntoConstraints != false {
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
-        return const
+        return set(viewAlias: view, name: name)
+    }
+    public func set(viewAlias view: AnyObject, name: String) -> ConstraintsBuilder {
+        var builder = self
+        builder.views[name] = view
+        return builder
+    }
+    public func set(metric value: AnyObject, name: String) -> ConstraintsBuilder {
+        var builder = self
+        builder.metrics[name] = value
+        return builder
+    }
+    public func set(vfs: String..., options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
+        var builder = self
+        vfs.forEach { (str) in
+            builder.vfsAndOptions += [(str, options)]
+        }
+        return builder
     }
 }
 
 extension Array where Element: NSLayoutConstraint {
-    public init(_ builder: ConstraintsBuilder, translatesAutoresizingMaskIntoConstraints: Bool = false) {
+    public init(_ builder: ConstraintsBuilder) {
         var constraints: [NSLayoutConstraint] = []
         builder.vfsAndOptions.forEach { (vfs,options) in
-            builder.views.forEach{ (_, view) in
-                guard let view = view as? UIView else {
-                    return
-                }
-                if view.translatesAutoresizingMaskIntoConstraints != translatesAutoresizingMaskIntoConstraints {
-                    view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
-                }
-            }
             constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
         }
         self.init(constraints as! [Element])
     }
 }
+

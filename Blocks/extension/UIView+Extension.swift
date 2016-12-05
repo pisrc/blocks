@@ -18,10 +18,10 @@ extension UIView {
         }
         addSubview(child)
         
-        let consts = [NSLayoutConstraint](
-            ConstraintsBuilder(view: child, name: "child")
-                .set(vfs: "H:|[child]|")
-                .set(vfs: "V:|[child]|"))
+        let builder = ConstraintsBuilder()
+            .set(view: child, name: "child")
+            .set(vfs: "H:|[child]|", "V:|[child]|")
+        let consts = [NSLayoutConstraint](builder)
         removeConstraints(constraints)
         addConstraints(consts)
     }

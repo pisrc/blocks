@@ -31,7 +31,8 @@ class CylinderExamViewController: UIViewController {
             addConstraints(
                 [Constraint.centerH(label, superview: self), Constraint.centerV(label, superview: self)])
             addConstraints(
-                [NSLayoutConstraint](ConstraintsBuilder(view: imageView, name: "imageView")
+                [NSLayoutConstraint](ConstraintsBuilder()
+                    .set(view: imageView, name: "imageView")
                     .set(vfs: "H:|[imageView]|")
                     .set(vfs: "V:|[imageView]|")))
         }
@@ -52,7 +53,8 @@ class CylinderExamViewController: UIViewController {
         cylinderView.delegate = self
         view.addSubview(cylinderView)
         
-        let builder = ConstraintsBuilder(view: cylinderView, name: "cylinderView")
+        let builder = ConstraintsBuilder()
+            .set(view: cylinderView, name: "cylinderView")
             .set(vfs: "H:|[cylinderView]|", "V:|[cylinderView]|")
         let consts = [NSLayoutConstraint](builder)
         view.addConstraints(consts)
