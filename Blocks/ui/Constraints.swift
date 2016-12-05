@@ -31,12 +31,12 @@ public struct ConstraintsBuilder {
     fileprivate var views: [String: AnyObject] = [:]
     fileprivate var metrics: [String: AnyObject] = [:]
     fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
-    fileprivate(set) public var constraints: [NSLayoutConstraint] = []
+    fileprivate var translatesAutoresizingMaskIntoConstraints: Bool = false
     
     public init() {
     }
     
-    public init(view: UIView, name: String) {
+    public init(view: AnyObject, name: String) {
         views[name] = view
     }
     
@@ -52,41 +52,27 @@ public struct ConstraintsBuilder {
         return const
     }
     
-    public func set(vfs: String, options: NSLayoutFormatOptions) -> ConstraintsBuilder {
+    public func set(vfs: String, options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
         var const = self
         const.vfsAndOptions += [(vfs, options)]
-        return const
-    }
-    
-    public func set(vfs: String...) -> ConstraintsBuilder {
-        var const = self
-        vfs.forEach { str in
-            const = const.set(vfs: str, options: NSLayoutFormatOptions(rawValue: 0))
-        }
         return const
     }
 }
 
 extension Array where Element: NSLayoutConstraint {
-    init(_ builder: ConstraintsBuilder) {
+    public init(_ builder: ConstraintsBuilder) {
         var constraints: [NSLayoutConstraint] = []
         builder.vfsAndOptions.forEach { (vfs,options) in
+            builder.views.forEach{ (_, view) in
+                guard let view = view as? UIView else {
+                    return
+                }
+                if view.translatesAutoresizingMaskIntoConstraints {
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                }
+            }
             constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
         }
         self.init(constraints as! [Element])
     }
 }
-
-/*
-extension Sequence where Iterator.Element == NSLayoutConstraint {
-    init(builder: ConstraintsBuilder) {
-        var constraints: [NSLayoutConstraint] = []
-        builder.vfsAndOptions.forEach { (vfs,options) in
-            constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
-        }
-        self.init()
-        //super.init(constraints)
-    }
-    
-}
-*/

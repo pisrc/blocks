@@ -20,7 +20,8 @@ extension UIView {
         
         let consts = [NSLayoutConstraint](
             ConstraintsBuilder(view: child, name: "child")
-                .set(vfs: "H:|[child]|", "V:|[child]|"))
+                .set(vfs: "H:|[child]|")
+                .set(vfs: "V:|[child]|"))
         removeConstraints(constraints)
         addConstraints(consts)
     }
