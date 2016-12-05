@@ -31,7 +31,6 @@ public struct ConstraintsBuilder {
     fileprivate var views: [String: AnyObject] = [:]
     fileprivate var metrics: [String: AnyObject] = [:]
     fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
-    fileprivate var translatesAutoresizingMaskIntoConstraints: Bool = false
     
     public init() {
     }
@@ -60,15 +59,15 @@ public struct ConstraintsBuilder {
 }
 
 extension Array where Element: NSLayoutConstraint {
-    public init(_ builder: ConstraintsBuilder) {
+    public init(_ builder: ConstraintsBuilder, translatesAutoresizingMaskIntoConstraints: Bool = false) {
         var constraints: [NSLayoutConstraint] = []
         builder.vfsAndOptions.forEach { (vfs,options) in
             builder.views.forEach{ (_, view) in
                 guard let view = view as? UIView else {
                     return
                 }
-                if view.translatesAutoresizingMaskIntoConstraints {
-                    view.translatesAutoresizingMaskIntoConstraints = false
+                if view.translatesAutoresizingMaskIntoConstraints != translatesAutoresizingMaskIntoConstraints {
+                    view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
                 }
             }
             constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
