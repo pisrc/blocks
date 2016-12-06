@@ -66,13 +66,15 @@ public struct ConstraintsBuilder {
 
 extension Array where Element: NSLayoutConstraint {
     public init(_ builder: ConstraintsBuilder) {
-        var constraints: [NSLayoutConstraint] = []
+        
         // view autoresizingMask 적용
         builder.viewBuffer.forEach { (name,viewAndMask) in
             if let view = viewAndMask.0 as? UIView, let autoresizingMask = viewAndMask.1 {
                 view.translatesAutoresizingMaskIntoConstraints = autoresizingMask
             }
         }
+        
+        var constraints: [NSLayoutConstraint] = []
         builder.vfsAndOptions.forEach { (vfs,options) in
             constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.viewDictionary)
         }
