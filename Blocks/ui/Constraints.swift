@@ -28,21 +28,26 @@ public struct Constraint {
 }
 
 public struct ConstraintsBuilder {
-    fileprivate var views: [String: AnyObject] = [:]
-    fileprivate var metrics: [String: AnyObject] = [:]
+    fileprivate var viewBuffer: [String:(AnyObject,Bool?)] = [:]    // name:(view,autoresizingMask)
+    fileprivate var metrics: [String:AnyObject] = [:]
     fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
+    
+    var viewDictionary: [String:AnyObject] {
+        var nameAndView: [String:AnyObject] = [:]
+        viewBuffer.forEach { (name, viewAndMask) in
+            nameAndView[name] = viewAndMask.0
+        }
+        return nameAndView
+    }
     
     public init() {
     }
     public func set(view: AnyObject, name: String) -> ConstraintsBuilder {
-        if let view = view as? UIView, view.translatesAutoresizingMaskIntoConstraints != false {
-            view.translatesAutoresizingMaskIntoConstraints = false
-        }
-        return set(viewAlias: view, name: name)
+        return set(view: view, name: name, autoresizingMask: false)
     }
-    public func set(viewAlias view: AnyObject, name: String) -> ConstraintsBuilder {
+    public func set(view: AnyObject, name: String, autoresizingMask: Bool?) -> ConstraintsBuilder {
         var builder = self
-        builder.views[name] = view
+        builder.viewBuffer[name] = (view,autoresizingMask)
         return builder
     }
     public func set(metric value: AnyObject, name: String) -> ConstraintsBuilder {
@@ -62,8 +67,14 @@ public struct ConstraintsBuilder {
 extension Array where Element: NSLayoutConstraint {
     public init(_ builder: ConstraintsBuilder) {
         var constraints: [NSLayoutConstraint] = []
+        // view autoresizingMask 적용
+        builder.viewBuffer.forEach { (name,viewAndMask) in
+            if let view = viewAndMask.0 as? UIView, let autoresizingMask = viewAndMask.1 {
+                view.translatesAutoresizingMaskIntoConstraints = autoresizingMask
+            }
+        }
         builder.vfsAndOptions.forEach { (vfs,options) in
-            constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.views)
+            constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.viewDictionary)
         }
         self.init(constraints as! [Element])
     }
