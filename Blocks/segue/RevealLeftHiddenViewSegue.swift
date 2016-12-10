@@ -22,7 +22,7 @@ final class RevealLeftHiddenViewSegue: UIStoryboardSegue {
     
     fileprivate var transitionDelegate: UIViewControllerTransitioningDelegate?
     
-    var direction: BSegueDirection?
+    var direction: SegueDirection?
     var sizeHandler: SizeHandlerFunc?
     
     override func perform() {

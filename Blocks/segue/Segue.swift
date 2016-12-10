@@ -2,17 +2,17 @@ import UIKit
 
 public typealias SizeHandlerFunc = (_ parentSize: CGSize) -> CGSize
 
-public enum BSegueStyle {
+public enum SegueStyle {
     case show(animated: Bool)           // Push
     case showDetail(animated: Bool)     // 화면 전환
     case presentModally(animated: Bool) // Modal
-    case presentModallyWithDirection(BSegueDirection, sizeHandler: SizeHandlerFunc)
+    case presentModallyWithDirection(SegueDirection, sizeHandler: SizeHandlerFunc)
     case presentPopup(sizeHandler: SizeHandlerFunc)
     case presentAsPopover
-    case embed(containerView: UIView?)
+    case embed
 }
 
-public enum BSegueDirection {
+public enum SegueDirection {
     case leftToRight
     case rightToLeft
 }
@@ -35,10 +35,10 @@ protocol AnimatedTransitioningPositionDelegate {
 }
 
 
-public struct BSegue {
+public struct Segue {
     
     public typealias Destination = () -> UIViewController
-    public typealias Style = () -> BSegueStyle
+    public typealias Style = () -> SegueStyle
     public let source: UIViewController
     fileprivate let destination: Destination
     fileprivate let style: Style
@@ -69,12 +69,12 @@ public struct BSegue {
             transitionDelegate = nil
         case .presentAsPopover:
             transitionDelegate = nil
-        case .embed(_):
+        case .embed:
             transitionDelegate = nil
         }
     }
     
-    fileprivate func getSegue(_ destination: UIViewController, style: BSegueStyle) -> UIStoryboardSegue? {
+    fileprivate func getSegue(_ destination: UIViewController, style: SegueStyle) -> UIStoryboardSegue? {
         
         var segue: UIStoryboardSegue?
         
@@ -120,8 +120,8 @@ public struct BSegue {
         case .presentAsPopover:
             segue = PresentAsPopoverSegue(identifier: nil, source: source, destination: destination)
             
-        case .embed(let containerView):
-            segue = EmbedSegue(identifier: nil, source: source, destination: destination, container: containerView)
+        case .embed:
+            segue = EmbedSegue(identifier: nil, source: source, destination: destination)
         }
         return segue
     }
@@ -211,17 +211,10 @@ public protocol Embedable: class {
 
 final class EmbedSegue: UIStoryboardSegue {
     
-    init(identifier: String?, source: UIViewController, destination: UIViewController, container: UIView?) {
-        guard source is Embedable else {
-            fatalError("\(type(of: source)) is not Embedable.")
-        }
-        super.init(identifier: identifier, source: source, destination: destination)
-    }
-    
     override func perform() {
         
         guard let embedableSource = source as? Embedable else {
-            return
+            fatalError("\(type(of: source)) is not Embedable.")
         }
         
         // 기존에 존재하는 child 는 삭제

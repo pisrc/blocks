@@ -20,7 +20,7 @@
 		9473BEC41DAD3EFC00AA920D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9473BEC21DAD3EFC00AA920D /* LaunchScreen.storyboard */; };
 		9473BECA1DAD40F700AA920D /* ConstraintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEC91DAD40F700AA920D /* ConstraintViewController.swift */; };
 		9473BED31DAD49DF00AA920D /* delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED21DAD49DF00AA920D /* delay.swift */; };
-		9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED41DAD4A2400AA920D /* BSegue.swift */; };
+		9473BED81DAD4A2400AA920D /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED41DAD4A2400AA920D /* Segue.swift */; };
 		9473BED91DAD4A2400AA920D /* PopupTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED51DAD4A2400AA920D /* PopupTransitionDelegate.swift */; };
 		9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */; };
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
@@ -97,7 +97,7 @@
 		9473BEC51DAD3EFC00AA920D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9473BEC91DAD40F700AA920D /* ConstraintViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintViewController.swift; sourceTree = "<group>"; };
 		9473BED21DAD49DF00AA920D /* delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = delay.swift; sourceTree = "<group>"; };
-		9473BED41DAD4A2400AA920D /* BSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSegue.swift; sourceTree = "<group>"; };
+		9473BED41DAD4A2400AA920D /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		9473BED51DAD4A2400AA920D /* PopupTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevealLeftHiddenViewSegue.swift; sourceTree = "<group>"; };
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		9473BECE1DAD49C200AA920D /* segue */ = {
 			isa = PBXGroup;
 			children = (
-				9473BED41DAD4A2400AA920D /* BSegue.swift */,
+				9473BED41DAD4A2400AA920D /* Segue.swift */,
 				9473BED51DAD4A2400AA920D /* PopupTransitionDelegate.swift */,
 				9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */,
 				9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */,
@@ -469,7 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9473BED81DAD4A2400AA920D /* BSegue.swift in Sources */,
+				9473BED81DAD4A2400AA920D /* Segue.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
 				942764AB1DFC4FC00048A3D5 /* Constraints.swift in Sources */,
 				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,
