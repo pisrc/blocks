@@ -205,36 +205,43 @@ final class PresentAsPopoverSegue: UIStoryboardSegue, UIPopoverPresentationContr
     }
 }
 
+public protocol Embedable: class {
+    weak var embedee: UIViewController? { get set }
+}
+
 final class EmbedSegue: UIStoryboardSegue {
     
-    fileprivate weak var containerView: UIView?
-    
     init(identifier: String?, source: UIViewController, destination: UIViewController, container: UIView?) {
+        guard source is Embedable else {
+            fatalError("\(type(of: source)) is not Embedable.")
+        }
         super.init(identifier: identifier, source: source, destination: destination)
-        containerView = container
     }
     
     override func perform() {
         
-        // 기존에 존재하는 child 는 삭제
-        containerView?.subviews.forEach({ (v) -> () in
-            v.removeFromSuperview()
-        })
-        source.childViewControllers.forEach { (vc) -> () in
-            vc.removeFromParentViewController()
+        guard let embedableSource = source as? Embedable else {
+            return
         }
         
-        source.addChildViewController(destination)
-        containerView?.addSubview(destination.view)
-        destination.didMove(toParentViewController: source)
+        // 기존에 존재하는 child 는 삭제
+        if let embedee = embedableSource.embedee {
+            embedee.willMove(toParentViewController: nil)
+            embedee.view.removeFromSuperview()
+            embedee.removeFromParentViewController()
+            embedee.didMove(toParentViewController: nil)
+        }
         
-        // fill
+        destination.willMove(toParentViewController: source)
+        source.view.addSubview(destination.view)
+        source.addChildViewController(destination)
+        destination.didMove(toParentViewController: source)
         let fillConsts = [NSLayoutConstraint](
             ConstraintsBuilder()
-                .set(view: destination.view, name: "parentview")
-                .set(vfs: "V:|[parentview]|", "H:|[parentview]|"))
-        
-        containerView?.addConstraints(fillConsts)
+                .set(view: destination.view, name: "destview")
+                .set(vfs: "V:|[destview]|", "H:|[destview]|"))
+        source.view.addConstraints(fillConsts)
+        embedableSource.embedee = destination
     }
 }
 

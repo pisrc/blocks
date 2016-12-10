@@ -1,32 +1,5 @@
 import Foundation
 
-
-public struct Constraint {
-    
-    // vfs 로 안되는 부분은 NSLayoutConstraint 를 직접 사용해야함 (center 정렬이 vfs 로 안됨)
-    public static func centerH(_ view: UIView, superview: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let const = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: superview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: constant)
-        return const
-    }
-    
-    public static func centerV(_ view: UIView, superview: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let const = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: superview, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: constant)
-        return const
-    }
-
-    public static func width(_ view: UIView, width: CGFloat) -> NSLayoutConstraint {
-        let const = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: width)
-        return const
-    }
-    
-    public static func height(_ view: UIView, height: CGFloat) -> NSLayoutConstraint {
-        let const = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height)
-        return const
-    }
-}
-
 public struct ConstraintsBuilder {
     fileprivate var viewBuffer: [String:(AnyObject,Bool?)] = [:]    // name:(view,autoresizingMask)
     fileprivate var metrics: [String:AnyObject] = [:]
@@ -82,3 +55,11 @@ extension Array where Element: NSLayoutConstraint {
     }
 }
 
+extension NSLayoutConstraint {
+    public convenience init(view: UIView, centerHOf superview: UIView, constant: CGFloat = 0) {
+        self.init(item: view, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: constant)
+    }
+    public convenience init(view: UIView, centerVOf superview: UIView, constant: CGFloat = 0) {
+        self.init(item: view, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1, constant: constant)
+    }
+}
