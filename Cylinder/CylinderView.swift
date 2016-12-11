@@ -27,9 +27,9 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     
     private var scrollView: UIScrollView!
     
-    private var child1 = CylinderPage()
-    private var child2 = CylinderPage()
-    private var child3 = CylinderPage()
+    private let child1 = CylinderPage()
+    private let child2 = CylinderPage()
+    private let child3 = CylinderPage()
     private var leftChild: CylinderPage! {
         didSet {
             leftChild.frame.origin = CGPoint(x: 0, y: 0)
@@ -93,6 +93,7 @@ public class CylinderView: UIView, UIScrollViewDelegate {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         

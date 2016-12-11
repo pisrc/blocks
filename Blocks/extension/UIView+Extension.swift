@@ -22,7 +22,6 @@ extension UIView {
             .set(view: child, name: "child")
             .set(vfs: "H:|[child]|", "V:|[child]|")
         let consts = [NSLayoutConstraint](builder)
-        removeConstraints(constraints)
         addConstraints(consts)
     }
 }
