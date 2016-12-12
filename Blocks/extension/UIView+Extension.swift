@@ -24,4 +24,23 @@ extension UIView {
         let consts = [NSLayoutConstraint](builder)
         addConstraints(consts)
     }
+    
+    public func startZRotation(duration: CFTimeInterval = 1, repeatCount: Float = Float.infinity, clockwise: Bool = true)
+    {
+        if layer.animation(forKey: "transform.rotation.z") != nil {
+            return
+        }
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        let direction = clockwise ? 1.0 : -1.0
+        animation.toValue = NSNumber(value: M_PI * 2 * direction)
+        animation.duration = duration
+        animation.isCumulative = true
+        animation.repeatCount = repeatCount
+        self.layer.add(animation, forKey:"transform.rotation.z")
+    }
+    
+    public func stopZRotation()
+    {
+        self.layer.removeAnimation(forKey: "transform.rotation.z")
+    }
 }
