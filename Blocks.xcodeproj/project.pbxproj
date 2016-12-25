@@ -34,6 +34,7 @@
 		94EA5AF21DAD3330006E5517 /* Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EA5AE81DAD3330006E5517 /* Blocks.framework */; };
 		94EA5AF71DAD3330006E5517 /* BlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA5AF61DAD3330006E5517 /* BlocksTests.swift */; };
 		94EA5AF91DAD3330006E5517 /* Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 94EA5AEB1DAD3330006E5517 /* Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94EC14281E0FBD35001755CD /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC14271E0FBD35001755CD /* CGPoint+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		94EA5AF11DAD3330006E5517 /* BlocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EA5AF61DAD3330006E5517 /* BlocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksTests.swift; sourceTree = "<group>"; };
 		94EA5AF81DAD3330006E5517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94EC14271E0FBD35001755CD /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				942649A11DE7CED900F4A535 /* UIView+Extension.swift */,
 				942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */,
 				942649A51DE7CF5B00F4A535 /* Int+Extension.swift */,
+				94EC14271E0FBD35001755CD /* CGPoint+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9473BED81DAD4A2400AA920D /* Segue.swift in Sources */,
+				94EC14281E0FBD35001755CD /* CGPoint+Extension.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
 				942764AB1DFC4FC00048A3D5 /* Constraints.swift in Sources */,
 				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,

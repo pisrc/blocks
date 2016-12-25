@@ -1,6 +1,7 @@
 import Foundation
 
 public struct ConstraintsBuilder {
+    
     fileprivate var viewBuffer: [String:(AnyObject,Bool?)] = [:]    // name:(view,autoresizingMask)
     fileprivate var metrics: [String:AnyObject] = [:]
     fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
@@ -28,6 +29,9 @@ public struct ConstraintsBuilder {
         builder.metrics[name] = value
         return builder
     }
+    public func set(metric value: CGFloat, name: String) -> ConstraintsBuilder {
+        return set(metric: value as AnyObject, name: name)
+    }
     public func set(vfs: String..., options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
         var builder = self
         vfs.forEach { (str) in
@@ -52,6 +56,41 @@ extension Array where Element: NSLayoutConstraint {
             constraints += NSLayoutConstraint.constraints(withVisualFormat: vfs, options: options, metrics: builder.metrics, views: builder.viewDictionary)
         }
         self.init(constraints as! [Element])
+    }
+    
+    public init(filled view: UIView) {
+        let builder = ConstraintsBuilder()
+            .set(view: view, name: "view")
+            .set(vfs: "H:|[view]|", "V:|[view]|")
+        let consts = [NSLayoutConstraint](builder)
+        self.init(consts as! [Element])
+    }
+    
+    public init(sized view: UIView, size: CGSize? = nil) {
+        let viewSize: CGSize = {
+            if let size = size {
+                return size
+            }
+            return view.frame.size
+        }()
+        let builder = ConstraintsBuilder()
+            .set(view: view, name: "view")
+            .set(metric: viewSize.width, name: "width")
+            .set(metric: viewSize.height, name: "height")
+            .set(vfs: "H:[view(width)]", "V:[view(height)]")
+        let consts = [NSLayoutConstraint](builder)
+        self.init(consts as! [Element])
+    }
+    
+    public init(centered view: UIView) {
+        guard let superview = view.superview else {
+            fatalError()
+        }
+        let consts = [
+            NSLayoutConstraint(view: view, centerHOf: superview),
+            NSLayoutConstraint(view: view, centerVOf: superview)
+        ]
+        self.init(consts as! [Element])
     }
 }
 
