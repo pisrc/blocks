@@ -31,6 +31,8 @@
 		94AAB4BD1DE99322003BA456 /* Cylinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AAB4B61DE99322003BA456 /* Cylinder.framework */; };
 		94AAB4BE1DE99322003BA456 /* Cylinder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94AAB4B61DE99322003BA456 /* Cylinder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94AAB4C51DE993E5003BA456 /* CylinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AAB4C41DE993E5003BA456 /* CylinderView.swift */; };
+		94B42E781E100C7C00C33B10 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42E771E100C7C00C33B10 /* CGSize+Extension.swift */; };
+		94B42E7A1E10101A00C33B10 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42E791E10101A00C33B10 /* CGRect+Extension.swift */; };
 		94EA5AF21DAD3330006E5517 /* Blocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EA5AE81DAD3330006E5517 /* Blocks.framework */; };
 		94EA5AF71DAD3330006E5517 /* BlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA5AF61DAD3330006E5517 /* BlocksTests.swift */; };
 		94EA5AF91DAD3330006E5517 /* Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 94EA5AEB1DAD3330006E5517 /* Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -109,6 +111,8 @@
 		94AAB4B81DE99322003BA456 /* Cylinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cylinder.h; sourceTree = "<group>"; };
 		94AAB4B91DE99322003BA456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AAB4C41DE993E5003BA456 /* CylinderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderView.swift; sourceTree = "<group>"; };
+		94B42E771E100C7C00C33B10 /* CGSize+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
+		94B42E791E10101A00C33B10 /* CGRect+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		94EA5AE81DAD3330006E5517 /* Blocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EA5AEB1DAD3330006E5517 /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
 		94EA5AEC1DAD3330006E5517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */,
 				942649A51DE7CF5B00F4A535 /* Int+Extension.swift */,
 				94EC14271E0FBD35001755CD /* CGPoint+Extension.swift */,
+				94B42E771E100C7C00C33B10 /* CGSize+Extension.swift */,
+				94B42E791E10101A00C33B10 /* CGRect+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -474,7 +480,9 @@
 			files = (
 				9473BED81DAD4A2400AA920D /* Segue.swift in Sources */,
 				94EC14281E0FBD35001755CD /* CGPoint+Extension.swift in Sources */,
+				94B42E781E100C7C00C33B10 /* CGSize+Extension.swift in Sources */,
 				9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */,
+				94B42E7A1E10101A00C33B10 /* CGRect+Extension.swift in Sources */,
 				942764AB1DFC4FC00048A3D5 /* Constraints.swift in Sources */,
 				942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */,
 				942649A61DE7CF5B00F4A535 /* Int+Extension.swift in Sources */,
