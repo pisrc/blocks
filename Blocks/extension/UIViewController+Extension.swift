@@ -20,7 +20,7 @@ extension UIViewController {
         return nil
     }
     
-    public static func fromStoryboard(name: String, identifier: String) -> UIViewController {
+    public static func from(storyboard name: String, identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: identifier)
     }
