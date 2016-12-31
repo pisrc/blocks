@@ -12,12 +12,12 @@ import Blocks
 class SegueViewController: UIViewController {
 
     @IBAction func showModal(_ sender: AnyObject) {
-        BSegue(
+        Segue(
             source: self,
             destination: { () -> UIViewController in
-                return UIViewController.fromStoryboard(name: "Main", identifier: "new")
-            }) { () -> BSegueStyle in
-                return BSegueStyle.presentModally(animated: true)
+                return UIViewController.from(storyboard: "Main", identifier: "new")
+            }) { () -> SegueStyle in
+                return SegueStyle.presentModally(animated: true)
             }.perform()
     }
     

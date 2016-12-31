@@ -25,7 +25,6 @@
 		9473BEDA1DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */; };
 		9473BEDB1DAD4A2400AA920D /* SlideOverTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */; };
 		9473BEE11DAD4A6000AA920D /* BManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473BEE01DAD4A6000AA920D /* BManagedObject.swift */; };
-		949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590901DE5760100C3CCAE /* CylinderExamViewController.swift */; };
 		949590931DE594A200C3CCAE /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949590921DE594A200C3CCAE /* NumberViewController.swift */; };
 		94B42E781E100C7C00C33B10 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42E771E100C7C00C33B10 /* CGSize+Extension.swift */; };
 		94B42E7A1E10101A00C33B10 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B42E791E10101A00C33B10 /* CGRect+Extension.swift */; };
@@ -86,7 +85,6 @@
 		9473BED61DAD4A2400AA920D /* RevealLeftHiddenViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevealLeftHiddenViewSegue.swift; sourceTree = "<group>"; };
 		9473BED71DAD4A2400AA920D /* SlideOverTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitionDelegate.swift; sourceTree = "<group>"; };
 		9473BEE01DAD4A6000AA920D /* BManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BManagedObject.swift; sourceTree = "<group>"; };
-		949590901DE5760100C3CCAE /* CylinderExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CylinderExamViewController.swift; sourceTree = "<group>"; };
 		949590921DE594A200C3CCAE /* NumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		94B42E771E100C7C00C33B10 /* CGSize+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		94B42E791E10101A00C33B10 /* CGRect+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				9473BEC51DAD3EFC00AA920D /* Info.plist */,
 				9473BEBD1DAD3EFC00AA920D /* Example.xcdatamodeld */,
 				940924791DB9B36B00B54CAD /* SegueViewController.swift */,
-				949590901DE5760100C3CCAE /* CylinderExamViewController.swift */,
 				949590921DE594A200C3CCAE /* NumberViewController.swift */,
 			);
 			path = Example;
@@ -374,7 +371,6 @@
 			files = (
 				9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */,
 				9473BECA1DAD40F700AA920D /* ConstraintViewController.swift in Sources */,
-				949590911DE5760100C3CCAE /* CylinderExamViewController.swift in Sources */,
 				9473BEBF1DAD3EFC00AA920D /* Example.xcdatamodeld in Sources */,
 				9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */,
 				9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */,
