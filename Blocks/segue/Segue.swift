@@ -66,7 +66,7 @@ public struct Segue {
                 transitionDelegate = RightToLeftSlideOverTransitionDelegate()
             }
         case .presentPopup(_):
-            transitionDelegate = nil
+            transitionDelegate = PopupTransitionDelegate()
         case .presentAsPopover:
             transitionDelegate = nil
         case .embed:
