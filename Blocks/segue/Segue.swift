@@ -1,7 +1,7 @@
 import UIKit
 
 public typealias SizeHandlerFunc = (_ parentRect: CGRect) -> CGSize
-public typealias OriginHandlerFunc = (_ parentRect: CGRect) -> CGPoint
+public typealias OriginHandlerFunc = (_ parentRect: CGRect, _ presentedSize: CGSize) -> CGPoint
 
 public enum SegueStyle {
     case show(animated: Bool)           // Push

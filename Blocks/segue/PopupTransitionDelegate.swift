@@ -79,7 +79,7 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
             presentedViewFrame.size = size(forChildContentContainer: self.presentedViewController, withParentContainerSize: containerBounds.size)
             presentedViewFrame.origin = {
                 if let originHandler = originHandler {
-                    return originHandler(containerBounds)
+                    return originHandler(containerBounds, presentedViewFrame.size)
                 } else {
                     // 화면 중앙에 위치
                     return CGPoint(

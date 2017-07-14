@@ -42,9 +42,12 @@ class SegueViewController: UIViewController {
                         print("sizeHandler is called!: \(rect)")
                         return CGSize(width: 270, height: 290)
                     },
-                    originHandler: { rect -> CGPoint in
-                        print("originHandler is called!: \(rect)")
-                        return CGPoint.zero
+                    originHandler: { (rect, presentedSize) -> CGPoint in
+                        print("originHandler is called!: rect: \(rect), presentedSize: \(presentedSize)")
+                        let center = CGPoint(
+                            x: (rect.width - presentedSize.width) / 2,
+                            y: (rect.height - presentedSize.height) / 2)
+                        return center
                     },
                     dimmedColor: UIColor.brown)
             })
