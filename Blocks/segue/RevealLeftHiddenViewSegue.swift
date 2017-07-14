@@ -1,11 +1,3 @@
-//
-//  DSegue+RevealTransition.swift
-//  Dobby
-//
-//  Created by ryan on 9/14/15.
-//  Copyright (c) 2015 while1.io. All rights reserved.
-//
-
 import Foundation
 
 protocol RevealPresentationPositionDelegate {

@@ -1,11 +1,3 @@
-//
-//  PresentModallyWithDirectionSegue.swift
-//  Dobby
-//
-//  Created by ryan on 11/23/15.
-//  Copyright © 2015 while1.io. All rights reserved.
-//
-
 import Foundation
 
 // MARK: - 왼쪽에서 slide로 화면을 덮으면서 나타나는 transition delegate

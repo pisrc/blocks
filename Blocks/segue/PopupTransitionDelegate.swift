@@ -1,11 +1,3 @@
-//
-//  PopupTransitionDelegate.swift
-//  Dobby
-//
-//  Created by ryan on 1/5/16.
-//  Copyright © 2016 while1.io. All rights reserved.
-//
-
 import Foundation
 
 
