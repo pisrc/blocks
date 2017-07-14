@@ -9,14 +9,14 @@
 import Foundation
 
 // MARK: - 왼쪽에서 slide로 화면을 덮으면서 나타나는 transition delegate
-final class LeftToRightSlideOverTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHasableTransitionDelgate, PresentationControllerPositionDelegate, AnimatedTransitioningPositionDelegate {
+final class LeftToRightSlideOverTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHavableTransitionDelgate, PresentationControllerPositionDelegate, AnimatedTransitioningPositionDelegate {
     
     // presentationview 의 size 를 정의 합니다.
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+    var sizeHandler: SizeHandlerFunc?
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = PresentationController(presentedViewController: presented, presenting: presenting)
-        presentationController.sizeHandler = self.sizeHandler
+        presentationController.sizeHandler = sizeHandler
         presentationController.positionDelegate = self
         return presentationController
     }
@@ -51,14 +51,14 @@ final class LeftToRightSlideOverTransitionDelegate: NSObject, UIViewControllerTr
 
 
 // MARK: - 오른쪽에서 slide로 화면을 덮으면서 나타나는 transition delegate
-final class RightToLeftSlideOverTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHasableTransitionDelgate, PresentationControllerPositionDelegate, AnimatedTransitioningPositionDelegate {
+final class RightToLeftSlideOverTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHavableTransitionDelgate, PresentationControllerPositionDelegate, AnimatedTransitioningPositionDelegate {
     
     // presentationview 의 size 를 정의 합니다.
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+    var sizeHandler: SizeHandlerFunc?
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = PresentationController(presentedViewController: presented, presenting: presenting)
-        presentationController.sizeHandler = self.sizeHandler
+        presentationController.sizeHandler = sizeHandler
         presentationController.positionDelegate = self
         return presentationController
     }
@@ -98,7 +98,7 @@ final class RightToLeftSlideOverTransitionDelegate: NSObject, UIViewControllerTr
 final class PresentationController: UIPresentationController, UIAdaptivePresentationControllerDelegate {
     var chromeView: UIView = UIView()   // 배경을 반투명하게 가리는 검정 배경
     var positionDelegate: PresentationControllerPositionDelegate?
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+    var sizeHandler: SizeHandlerFunc?
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -118,7 +118,7 @@ final class PresentationController: UIPresentationController, UIAdaptivePresenta
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         // 기본적으로는 화면의 33% 할당, sizeHandler 지정되면 handler 에서 지정한 size 로 설정
         if let handler = self.sizeHandler {
-            return handler(parentSize)
+            return handler(CGRect(origin: CGPoint.zero, size: parentSize))
         }
         let width = parentSize.width / 3.0
         return CGSize(width: width, height: parentSize.height)

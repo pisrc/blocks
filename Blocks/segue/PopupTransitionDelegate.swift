@@ -9,14 +9,16 @@
 import Foundation
 
 
-final class PopupTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHasableTransitionDelgate {
+final class PopupTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, OriginHandlerHavableTransitionDelgate, SizeHandlerHavableTransitionDelgate {
     
     // presentationview 의 size 를 정의 합니다.
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+    var sizeHandler: SizeHandlerFunc?
+    var originHandler: OriginHandlerFunc?
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = PopupPresentationController(presentedViewController: presented, presenting: presenting)
-        presentationController.sizeHandler = self.sizeHandler
+        presentationController.sizeHandler = sizeHandler
+        presentationController.originHandler = originHandler
         return presentationController
     }
     
@@ -35,7 +37,8 @@ final class PopupTransitionDelegate: NSObject, UIViewControllerTransitioningDele
 
 final class PopupPresentationController: UIPresentationController, UIAdaptivePresentationControllerDelegate {
     var chromeView: UIView = UIView()   // 배경을 반투명하게 가리는 검정 배경
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+    var sizeHandler: SizeHandlerFunc?
+    var originHandler: OriginHandlerFunc?
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -69,8 +72,8 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         // 기본적으로는 화면의 80% 할당, sizeHandler 지정되면 handler 에서 지정한 size 로 설정
-        if let handler = self.sizeHandler {
-            return handler(parentSize)
+        if let sizeHandler = sizeHandler {
+            return sizeHandler(CGRect(origin: CGPoint.zero, size: parentSize))
         }
         let width = parentSize.width * 0.8
         let height = parentSize.height * 0.8
@@ -81,10 +84,16 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
         var presentedViewFrame = CGRect.zero
         if let containerBounds = containerView?.bounds {
             presentedViewFrame.size = size(forChildContentContainer: self.presentedViewController, withParentContainerSize: containerBounds.size)
-            // 화면 중앙에 위치
-            presentedViewFrame.origin = CGPoint(
-                x: (containerBounds.width - presentedViewFrame.size.width) / 2,
-                y: (containerBounds.height - presentedViewFrame.size.height) / 2)
+            presentedViewFrame.origin = {
+                if let originHandler = originHandler {
+                    return originHandler(containerBounds)
+                } else {
+                    // 화면 중앙에 위치
+                    return CGPoint(
+                        x: (containerBounds.width - presentedViewFrame.size.width) / 2,
+                        y: (containerBounds.height - presentedViewFrame.size.height) / 2)
+                }
+            }()
         }
         return presentedViewFrame
     }

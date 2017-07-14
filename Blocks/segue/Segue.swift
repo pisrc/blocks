@@ -1,13 +1,14 @@
 import UIKit
 
-public typealias SizeHandlerFunc = (_ parentSize: CGSize) -> CGSize
+public typealias SizeHandlerFunc = (_ parentRect: CGRect) -> CGSize
+public typealias OriginHandlerFunc = (_ parentRect: CGRect) -> CGPoint
 
 public enum SegueStyle {
     case show(animated: Bool)           // Push
     case showDetail(animated: Bool)     // 화면 전환
     case presentModally(animated: Bool) // Modal
     case presentModallyWithDirection(SegueDirection, sizeHandler: SizeHandlerFunc)
-    case presentPopup(sizeHandler: SizeHandlerFunc)
+    case presentPopup(sizeHandler: SizeHandlerFunc, originHandler: OriginHandlerFunc)
     case presentAsPopover
     case embed
 }
@@ -25,8 +26,12 @@ protocol PresentationControllerPositionDelegate {
     func positionForPresentedView(_ containerRect: CGRect, presentedRect: CGRect) -> CGPoint
 }
 
-protocol SizeHandlerHasableTransitionDelgate {
-    var sizeHandler: ((_ parentSize: CGSize) -> CGSize)? { get set }
+protocol SizeHandlerHavableTransitionDelgate {
+    var sizeHandler: SizeHandlerFunc? { get set }
+}
+
+protocol OriginHandlerHavableTransitionDelgate {
+    var originHandler: OriginHandlerFunc? { get set }
 }
 
 protocol AnimatedTransitioningPositionDelegate {
@@ -65,7 +70,7 @@ public struct Segue {
             case .rightToLeft:
                 transitionDelegate = RightToLeftSlideOverTransitionDelegate()
             }
-        case .presentPopup(_):
+        case .presentPopup(_, _):
             transitionDelegate = PopupTransitionDelegate()
         case .presentAsPopover:
             transitionDelegate = nil
@@ -102,17 +107,20 @@ public struct Segue {
         case .presentModallyWithDirection(_, let sizeHandler) :
             destination.modalPresentationStyle = .custom
             destination.transitioningDelegate = transitionDelegate
-            if var transitioningDelegate = self.transitionDelegate as? SizeHandlerHasableTransitionDelgate {
+            if var transitioningDelegate = self.transitionDelegate as? SizeHandlerHavableTransitionDelgate {
                 transitioningDelegate.sizeHandler = sizeHandler
             }
             
             segue = PresentModallySegue(identifier: nil, source: source, destination: destination)
             
-        case .presentPopup(let sizeHandler):    // popup 창 류
+        case .presentPopup(let sizeHandler, let originHandler):    // popup 창 류
             destination.modalPresentationStyle = .custom
             destination.transitioningDelegate = transitionDelegate
-            if var transitioningDelegate = transitionDelegate as? SizeHandlerHasableTransitionDelgate {
+            if var transitioningDelegate = transitionDelegate as? SizeHandlerHavableTransitionDelgate {
                 transitioningDelegate.sizeHandler = sizeHandler
+            }
+            if var transitioningDelegate = transitionDelegate as? OriginHandlerHavableTransitionDelgate {
+                transitioningDelegate.originHandler = originHandler
             }
             
             segue = PresentModallySegue(identifier: nil, source: source, destination: destination)

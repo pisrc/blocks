@@ -36,7 +36,7 @@ final class RevealLeftHiddenViewSegue: UIStoryboardSegue {
             //self.transitionDelegate = RightToLeftSlideForHiddenTransitionDelegate()
             print("later")
         }
-        if var trans = self.transitionDelegate as? SizeHandlerHasableTransitionDelgate {
+        if var trans = self.transitionDelegate as? SizeHandlerHavableTransitionDelgate {
             trans.sizeHandler = sizeHandler
         }
         destination.modalPresentationStyle = .custom
@@ -48,13 +48,13 @@ final class RevealLeftHiddenViewSegue: UIStoryboardSegue {
 extension RevealLeftHiddenViewSegue {
     
     // MARK: - 왼쪽에서 시작하는 기존 container view를 slide로 밀면서 나타나는 transition
-    final class RevealTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHasableTransitionDelgate, RevealPresentationPositionDelegate, AnimatedRevealTransitioningPositionDelegate {
+    final class RevealTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, SizeHandlerHavableTransitionDelgate, RevealPresentationPositionDelegate, AnimatedRevealTransitioningPositionDelegate {
         
-        var sizeHandler: ((_ parentSize: CGSize) -> CGSize)? // SizeHandlerHasableTransitionDelgate
+        var sizeHandler: SizeHandlerFunc?
         
         func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
             let presentationController = RevealPresentationController(presentedViewController: presented, presenting: presenting)
-            presentationController.sizeHandler = self.sizeHandler
+            presentationController.sizeHandler = sizeHandler
             presentationController.positionDelegate = self
             return presentationController
         }
@@ -80,7 +80,7 @@ extension RevealLeftHiddenViewSegue {
         func boundaryCollisionCheck(_ presented: CGRect, presenting: CGRect, container: CGRect, delta :CGPoint) -> Bool {
             var size = presented.size
             if let handler = self.sizeHandler {
-                size = handler(container.size)
+                size = handler(CGRect(origin: CGPoint.zero, size: container.size))
             }
             
             if size.width < presenting.origin.x + delta.x {
@@ -96,7 +96,7 @@ extension RevealLeftHiddenViewSegue {
         func finalPositionForPresentingView(_ containerRect: CGRect, presentedRect: CGRect) -> CGPoint {
             // 보통 기존 contents 영역의 view 는 좌측 메뉴가 열렸을때 좌측메뉴 너비의 x 좌표에 위치함
             if let handler = self.sizeHandler {
-                let size = handler(containerRect.size)
+                let size = handler(CGRect(origin: CGPoint.zero, size: containerRect.size))
                 let pos = CGPoint(x: size.width, y: 0)
                 return pos
             }
@@ -109,7 +109,7 @@ extension RevealLeftHiddenViewSegue {
         var chromeView: UIView = UIView()   // 배경을 반투명하게 가리는 검정 배경
         var orgPresentingSuperview: UIView?
         var positionDelegate: RevealPresentationPositionDelegate?
-        var sizeHandler: ((_ parentSize: CGSize) -> CGSize)?
+        var sizeHandler: SizeHandlerFunc?
         
         override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
             super.init(presentedViewController: presentedViewController, presenting: presentingViewController)

@@ -11,6 +11,8 @@ import Blocks
 
 class SegueViewController: UIViewController {
 
+    private var popupSegue: Segue!
+    
     @IBAction func showModal(_ sender: AnyObject) {
         Segue(
             source: self,
@@ -21,10 +23,30 @@ class SegueViewController: UIViewController {
             }.perform()
     }
     
+    @IBAction func showPopup(_ sender: Any) {
+        popupSegue.perform()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        popupSegue = Segue(
+            source: self,
+            destination: { () -> UIViewController in
+                let vc = UIViewController.from(storyboard: "Main", identifier: "new")
+                return vc
+            },
+            style: { () -> SegueStyle in
+                return SegueStyle.presentPopup(
+                    sizeHandler: { (rect) -> CGSize in
+                        print("sizeHandler is called!: \(rect)")
+                        return CGSize(width: 270, height: 290)
+                    },
+                    originHandler: { rect -> CGPoint in
+                        print("originHandler is called!: \(rect)")
+                        return CGPoint.zero
+                    })
+            })
     }
 
     override func didReceiveMemoryWarning() {
