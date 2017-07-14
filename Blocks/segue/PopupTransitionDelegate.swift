@@ -9,14 +9,15 @@
 import Foundation
 
 
-final class PopupTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, OriginHandlerHavableTransitionDelgate, SizeHandlerHavableTransitionDelgate {
+final class PopupTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, OriginHandlerHavableTransitionDelegate,  SizeHandlerHavableTransitionDelgate, DimmedColorHavableTransitionDelegate {
     
     // presentationview 의 size 를 정의 합니다.
     var sizeHandler: SizeHandlerFunc?
     var originHandler: OriginHandlerFunc?
+    var dimmedColor: UIColor?
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let presentationController = PopupPresentationController(presentedViewController: presented, presenting: presenting)
+        let presentationController = PopupPresentationController(presentedViewController: presented, presenting: presenting, dimmedColor: dimmedColor)
         presentationController.sizeHandler = sizeHandler
         presentationController.originHandler = originHandler
         return presentationController
@@ -40,10 +41,10 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
     var sizeHandler: SizeHandlerFunc?
     var originHandler: OriginHandlerFunc?
     
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, dimmedColor: UIColor?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         
-        chromeView.backgroundColor = UIColor(white: 0.0, alpha: 0.4)
+        chromeView.backgroundColor = dimmedColor ?? UIColor(white: 0.0, alpha: 0.4)
         chromeView.alpha = 0.0
         chromeView.addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(PopupPresentationController.chromeViewTapped(_:))))

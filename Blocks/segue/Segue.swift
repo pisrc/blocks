@@ -8,7 +8,7 @@ public enum SegueStyle {
     case showDetail(animated: Bool)     // 화면 전환
     case presentModally(animated: Bool) // Modal
     case presentModallyWithDirection(SegueDirection, sizeHandler: SizeHandlerFunc)
-    case presentPopup(sizeHandler: SizeHandlerFunc, originHandler: OriginHandlerFunc)
+    case presentPopup(sizeHandler: SizeHandlerFunc, originHandler: OriginHandlerFunc, dimmedColor: UIColor?)
     case presentAsPopover
     case embed
 }
@@ -30,8 +30,12 @@ protocol SizeHandlerHavableTransitionDelgate {
     var sizeHandler: SizeHandlerFunc? { get set }
 }
 
-protocol OriginHandlerHavableTransitionDelgate {
+protocol OriginHandlerHavableTransitionDelegate {
     var originHandler: OriginHandlerFunc? { get set }
+}
+
+protocol DimmedColorHavableTransitionDelegate {
+    var dimmedColor: UIColor? { get set }
 }
 
 protocol AnimatedTransitioningPositionDelegate {
@@ -70,7 +74,7 @@ public struct Segue {
             case .rightToLeft:
                 transitionDelegate = RightToLeftSlideOverTransitionDelegate()
             }
-        case .presentPopup(_, _):
+        case .presentPopup(_, _, _):
             transitionDelegate = PopupTransitionDelegate()
         case .presentAsPopover:
             transitionDelegate = nil
@@ -113,16 +117,18 @@ public struct Segue {
             
             segue = PresentModallySegue(identifier: nil, source: source, destination: destination)
             
-        case .presentPopup(let sizeHandler, let originHandler):    // popup 창 류
+        case .presentPopup(let sizeHandler, let originHandler, let dimmedColor):    // popup 창 류
             destination.modalPresentationStyle = .custom
             destination.transitioningDelegate = transitionDelegate
             if var transitioningDelegate = transitionDelegate as? SizeHandlerHavableTransitionDelgate {
                 transitioningDelegate.sizeHandler = sizeHandler
             }
-            if var transitioningDelegate = transitionDelegate as? OriginHandlerHavableTransitionDelgate {
+            if var transitioningDelegate = transitionDelegate as? OriginHandlerHavableTransitionDelegate {
                 transitioningDelegate.originHandler = originHandler
             }
-            
+            if var transitioningDelegate = transitionDelegate as? DimmedColorHavableTransitionDelegate {
+                transitioningDelegate.dimmedColor = dimmedColor
+            }
             segue = PresentModallySegue(identifier: nil, source: source, destination: destination)
             
         case .presentAsPopover:

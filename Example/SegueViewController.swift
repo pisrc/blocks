@@ -45,7 +45,8 @@ class SegueViewController: UIViewController {
                     originHandler: { rect -> CGPoint in
                         print("originHandler is called!: \(rect)")
                         return CGPoint.zero
-                    })
+                    },
+                    dimmedColor: UIColor.brown)
             })
     }
 
