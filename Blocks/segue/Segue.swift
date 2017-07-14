@@ -8,7 +8,7 @@ public enum SegueStyle {
     case showDetail(animated: Bool)     // 화면 전환
     case presentModally(animated: Bool) // Modal
     case presentModallyWithDirection(SegueDirection, sizeHandler: SizeHandlerFunc)
-    case presentPopup(sizeHandler: SizeHandlerFunc, originHandler: OriginHandlerFunc, dimmedColor: UIColor?)
+    case presentPopup(sizeHandler: SizeHandlerFunc, originHandler: OriginHandlerFunc?, dimmedColor: UIColor?)
     case presentAsPopover
     case embed
 }
