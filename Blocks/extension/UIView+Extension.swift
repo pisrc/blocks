@@ -32,7 +32,7 @@ extension UIView {
         }
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         let direction = clockwise ? 1.0 : -1.0
-        animation.toValue = NSNumber(value: M_PI * 2 * direction)
+        animation.toValue = NSNumber(value: Double.pi * 2 * direction)
         animation.duration = duration
         animation.isCumulative = true
         animation.repeatCount = repeatCount
