@@ -42,12 +42,26 @@ class SegueViewController: UIViewController {
                         print("sizeHandler is called!: \(rect)")
                         return CGSize(width: 270, height: 290)
                     },
-                    originHandler: { (rect, presentedSize) -> CGPoint in
-                        print("originHandler is called!: rect: \(rect), presentedSize: \(presentedSize)")
-                        let center = CGPoint(
-                            x: (rect.width - presentedSize.width) / 2,
-                            y: (rect.height - presentedSize.height) / 2)
-                        return center
+                    originHandler: { (containerBounds, presentedSize, isShowKeyboard) -> CGPoint in
+                        print("originHandler is called!: containerBounds: \(containerBounds), presentedSize: \(presentedSize), isShowKeyboard: \(isShowKeyboard)")
+                        let y = { () -> CGFloat in
+                            let centerOriginY = (containerBounds.height - presentedSize.height) / 2
+                            if isShowKeyboard {
+                                let marginWithKeyboard: CGFloat = 50.0
+                                let newY = containerBounds.height - marginWithKeyboard - presentedSize.height
+                                if 0 <= newY {
+                                    return newY
+                                } else {
+                                    return centerOriginY
+                                }
+                            } else {
+                                return centerOriginY
+                            }
+                        }()
+                        let origin = CGPoint(
+                            x: (containerBounds.width - presentedSize.width) / 2,
+                            y: y)
+                        return origin
                     },
                     dimmedColor: UIColor.brown)
             })

@@ -33,6 +33,8 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
     var sizeHandler: SizeHandlerFunc?
     var originHandler: OriginHandlerFunc?
     
+    private var isShowKeyboard = false
+    
     init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, dimmedColor: UIColor?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         
@@ -54,6 +56,8 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
             
             // 키보드가 노출 여부가 화면사이즈에 영향을 미치게 합니다.
             containerView?.frame.size.height = keyboardEndFrame.origin.y
+            
+            isShowKeyboard = 0 < keyboardEndFrame.height
         }
     }
     
@@ -79,12 +83,14 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
             presentedViewFrame.size = size(forChildContentContainer: self.presentedViewController, withParentContainerSize: containerBounds.size)
             presentedViewFrame.origin = {
                 if let originHandler = originHandler {
-                    return originHandler(containerBounds, presentedViewFrame.size)
+                    let origin = originHandler(containerBounds, presentedViewFrame.size, isShowKeyboard)
+                    return origin
                 } else {
                     // 화면 중앙에 위치
-                    return CGPoint(
+                    let origin = CGPoint(
                         x: (containerBounds.width - presentedViewFrame.size.width) / 2,
                         y: (containerBounds.height - presentedViewFrame.size.height) / 2)
+                    return origin
                 }
             }()
         }
