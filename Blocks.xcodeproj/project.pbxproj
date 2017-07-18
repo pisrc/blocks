@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9408A5E61F1DE45E00B660F8 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408A5E51F1DE45E00B660F8 /* HelloViewController.swift */; };
+		9408A5E81F1DEDC700B660F8 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408A5E71F1DEDC700B660F8 /* NewViewController.swift */; };
 		9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940924791DB9B36B00B54CAD /* SegueViewController.swift */; };
 		942649A31DE7CED900F4A535 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942649A11DE7CED900F4A535 /* UIView+Extension.swift */; };
 		942649A41DE7CED900F4A535 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */; };
@@ -65,6 +67,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9408A5E51F1DE45E00B660F8 /* HelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
+		9408A5E71F1DEDC700B660F8 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		940924791DB9B36B00B54CAD /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
 		942649A11DE7CED900F4A535 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		942649A21DE7CED900F4A535 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				9473BEBD1DAD3EFC00AA920D /* Example.xcdatamodeld */,
 				940924791DB9B36B00B54CAD /* SegueViewController.swift */,
 				949590921DE594A200C3CCAE /* NumberViewController.swift */,
+				9408A5E51F1DE45E00B660F8 /* HelloViewController.swift */,
+				9408A5E71F1DEDC700B660F8 /* NewViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -371,6 +377,8 @@
 			files = (
 				9473BEB91DAD3EFC00AA920D /* ViewController.swift in Sources */,
 				9473BECA1DAD40F700AA920D /* ConstraintViewController.swift in Sources */,
+				9408A5E61F1DE45E00B660F8 /* HelloViewController.swift in Sources */,
+				9408A5E81F1DEDC700B660F8 /* NewViewController.swift in Sources */,
 				9473BEBF1DAD3EFC00AA920D /* Example.xcdatamodeld in Sources */,
 				9409247A1DB9B36B00B54CAD /* SegueViewController.swift in Sources */,
 				9473BEB71DAD3EFC00AA920D /* AppDelegate.swift in Sources */,
