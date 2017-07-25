@@ -43,21 +43,41 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
         chromeView.addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(PopupPresentationController.chromeViewTapped(_:))))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(PopupPresentationController.keyboardNotification(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(PopupPresentationController.keyboardWillShow(_:)),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(PopupPresentationController.keyboardWillHide(_:)),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func keyboardNotification(_ notification: Notification) {
+    
+    func keyboardWillShow(_ notification: Foundation.Notification) {
+        isShowKeyboard = true
+        
         if let userInfo = (notification as NSNotification).userInfo,
             let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             // 키보드가 노출 여부가 화면사이즈에 영향을 미치게 합니다.
             containerView?.frame.size.height = keyboardEndFrame.origin.y
+        }
+    }
+    func keyboardWillHide(_ notification: Foundation.Notification) {
+        isShowKeyboard = false
+        
+        if let userInfo = (notification as NSNotification).userInfo,
+            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
-            isShowKeyboard = 0 < keyboardEndFrame.height
+            // 키보드가 노출 여부가 화면사이즈에 영향을 미치게 합니다.
+            containerView?.frame.size.height = keyboardEndFrame.origin.y
         }
     }
     
