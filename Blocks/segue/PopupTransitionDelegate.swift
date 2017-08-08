@@ -45,13 +45,13 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(PopupPresentationController.keyboardWillShow(_:)),
-            name: NSNotification.Name.UIKeyboardWillShow,
+            selector: #selector(PopupPresentationController.keyboardDidShow(_:)),
+            name: NSNotification.Name.UIKeyboardDidShow,
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(PopupPresentationController.keyboardWillHide(_:)),
-            name: NSNotification.Name.UIKeyboardWillHide,
+            selector: #selector(PopupPresentationController.keyboardDidHide(_:)),
+            name: NSNotification.Name.UIKeyboardDidHide,
             object: nil)
     }
     
@@ -60,7 +60,7 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
     }
     
     
-    func keyboardWillShow(_ notification: Foundation.Notification) {
+    func keyboardDidShow(_ notification: Foundation.Notification) {
         isShowKeyboard = true
         
         if let userInfo = (notification as NSNotification).userInfo,
@@ -70,7 +70,7 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
             containerView?.frame.size.height = keyboardEndFrame.origin.y
         }
     }
-    func keyboardWillHide(_ notification: Foundation.Notification) {
+    func keyboardDidHide(_ notification: Foundation.Notification) {
         isShowKeyboard = false
         
         if let userInfo = (notification as NSNotification).userInfo,
