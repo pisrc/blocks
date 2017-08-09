@@ -48,7 +48,7 @@ public struct Segue {
     
     public typealias Destination = () -> UIViewController
     public typealias Style = () -> SegueStyle
-    public let source: UIViewController
+    public weak var source: UIViewController?   // source vc 와의 순환 참조를 막기 위한 weak
     fileprivate let destination: Destination
     fileprivate let style: Style
     
@@ -84,6 +84,10 @@ public struct Segue {
     }
     
     fileprivate func getSegue(_ destination: UIViewController, style: SegueStyle) -> UIStoryboardSegue? {
+        
+        guard let source = source else {
+            return nil
+        }
         
         var segue: UIStoryboardSegue?
         
@@ -154,7 +158,7 @@ public struct Segue {
             // prepareForSegue 호출 (sender 가 있으면 sender 로 없으면 source 로)
             if let target = target {
                 target.prepare(for: segue, sender: sender)
-            } else {
+            } else if let source = source {
                 source.prepare(for: segue, sender: sender)
             }
             segue.perform()

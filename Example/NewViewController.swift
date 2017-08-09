@@ -19,6 +19,9 @@ class NewViewController: UIViewController {
         
     }
 
+    deinit {
+        print("[deinit] NewViewController")
+    }
     
 
     override func viewWillAppear(_ animated: Bool) {
