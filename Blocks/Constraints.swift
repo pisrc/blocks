@@ -4,7 +4,7 @@ public struct ConstraintsBuilder {
     
     fileprivate var viewBuffer: [String:(AnyObject,Bool?)] = [:]    // name:(view,autoresizingMask)
     fileprivate var metrics: [String:AnyObject] = [:]
-    fileprivate var vfsAndOptions: [(String, NSLayoutFormatOptions)] = []
+    fileprivate var vfsAndOptions: [(String, NSLayoutConstraint.FormatOptions)] = []
     
     var viewDictionary: [String:AnyObject] {
         var nameAndView: [String:AnyObject] = [:]
@@ -32,7 +32,7 @@ public struct ConstraintsBuilder {
     public func set(metric value: CGFloat, name: String) -> ConstraintsBuilder {
         return set(metric: value as AnyObject, name: name)
     }
-    public func set(vfs: String..., options: NSLayoutFormatOptions = NSLayoutFormatOptions(rawValue: 0)) -> ConstraintsBuilder {
+    public func set(vfs: String..., options: NSLayoutConstraint.FormatOptions = NSLayoutConstraint.FormatOptions(rawValue: 0)) -> ConstraintsBuilder {
         var builder = self
         vfs.forEach { (str) in
             builder.vfsAndOptions += [(str, options)]

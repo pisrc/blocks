@@ -113,14 +113,14 @@ extension RevealLeftHiddenViewSegue {
                 UIPanGestureRecognizer(target: self, action: #selector(RevealPresentationController.chromeViewPanned(_:))))
         }
         
-        func chromeViewTapped(_ gesture: UIGestureRecognizer) {
-            if(gesture.state == UIGestureRecognizerState.ended) {
+        @objc func chromeViewTapped(_ gesture: UIGestureRecognizer) {
+            if(gesture.state == UIGestureRecognizer.State.ended) {
                 presentingViewController.dismiss(animated: true, completion: nil)
             }
         }
         
         var oldTransform = CGAffineTransform.identity
-        func chromeViewPanned(_ recognizer: UIPanGestureRecognizer) {
+        @objc func chromeViewPanned(_ recognizer: UIPanGestureRecognizer) {
             let presentingView = self.presentingViewController.view
             let presentedView = self.presentedViewController.view
             let leftToRight = (recognizer.velocity(in: presentingView).x > 0)
@@ -146,7 +146,7 @@ extension RevealLeftHiddenViewSegue {
                         delay: 0,
                         usingSpringWithDamping: 1.0,
                         initialSpringVelocity: 0,
-                        options: UIViewAnimationOptions(),
+                        options: UIView.AnimationOptions(),
                         animations: {
                             presentingView?.transform = self.oldTransform
                         },
@@ -186,7 +186,7 @@ extension RevealLeftHiddenViewSegue {
         }
         
         override func containerViewWillLayoutSubviews() {
-            self.containerView?.bringSubview(toFront: self.presentingViewController.view)
+            self.containerView?.bringSubviewToFront(self.presentingViewController.view)
         }
         
         override var shouldPresentInFullscreen : Bool {
@@ -225,7 +225,7 @@ extension RevealLeftHiddenViewSegue {
                 delay: 0,
                 usingSpringWithDamping: 300.0,
                 initialSpringVelocity: 5.0,
-                options: UIViewAnimationOptions.allowUserInteraction,
+                options: UIView.AnimationOptions.allowUserInteraction,
                 animations: { () -> Void in
                     if self.isPresentation {
                         tingVC.view.transform = CGAffineTransform(translationX: openTargetPosX, y: 0)

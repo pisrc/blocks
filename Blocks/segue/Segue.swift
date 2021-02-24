@@ -237,16 +237,16 @@ final class EmbedSegue: UIStoryboardSegue {
         
         // 기존에 존재하는 child 는 삭제
         if let embedee = embedableSource.embedee {
-            embedee.willMove(toParentViewController: nil)
+            embedee.willMove(toParent: nil)
             embedee.view.removeFromSuperview()
-            embedee.removeFromParentViewController()
-            embedee.didMove(toParentViewController: nil)
+            embedee.removeFromParent()
+            embedee.didMove(toParent: nil)
         }
         
-        destination.willMove(toParentViewController: source)
+        destination.willMove(toParent: source)
         source.view.addSubview(destination.view)
-        source.addChildViewController(destination)
-        destination.didMove(toParentViewController: source)
+        source.addChild(destination)
+        destination.didMove(toParent: source)
         let fillConsts = [NSLayoutConstraint](
             ConstraintsBuilder()
                 .set(view: destination.view, name: "destview")

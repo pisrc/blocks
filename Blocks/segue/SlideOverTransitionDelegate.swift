@@ -101,8 +101,8 @@ final class PresentationController: UIPresentationController, UIAdaptivePresenta
             UITapGestureRecognizer(target: self, action: #selector(PresentationController.chromeViewTapped(_:))))
     }
     
-    func chromeViewTapped(_ gesture: UIGestureRecognizer) {
-        if(gesture.state == UIGestureRecognizerState.ended) {
+    @objc func chromeViewTapped(_ gesture: UIGestureRecognizer) {
+        if(gesture.state == UIGestureRecognizer.State.ended) {
             presentingViewController.dismiss(animated: true, completion: nil)
         }
     }
@@ -201,7 +201,7 @@ final class AnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioni
                 delay: 0,
                 usingSpringWithDamping: 300.0,
                 initialSpringVelocity: 5.0,
-                options: UIViewAnimationOptions.allowUserInteraction,
+                options: UIView.AnimationOptions.allowUserInteraction,
                 animations: { () -> Void in
                     upperView?.frame = finalFrameForUpper
                 },

@@ -46,12 +46,12 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(PopupPresentationController.keyboardDidShow(_:)),
-            name: NSNotification.Name.UIKeyboardDidShow,
+            name: UIResponder.keyboardDidShowNotification,
             object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(PopupPresentationController.keyboardDidHide(_:)),
-            name: NSNotification.Name.UIKeyboardDidHide,
+            name: UIResponder.keyboardDidHideNotification,
             object: nil)
     }
     
@@ -60,29 +60,29 @@ final class PopupPresentationController: UIPresentationController, UIAdaptivePre
     }
     
     
-    func keyboardDidShow(_ notification: Foundation.Notification) {
+    @objc func keyboardDidShow(_ notification: Foundation.Notification) {
         isShowKeyboard = true
         
         if let userInfo = (notification as NSNotification).userInfo,
-            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+           let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             // 키보드가 노출 여부가 화면사이즈에 영향을 미치게 합니다.
             containerView?.frame.size.height = keyboardEndFrame.origin.y
         }
     }
-    func keyboardDidHide(_ notification: Foundation.Notification) {
+    @objc func keyboardDidHide(_ notification: Foundation.Notification) {
         isShowKeyboard = false
         
         if let userInfo = (notification as NSNotification).userInfo,
-            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+           let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             // 키보드가 노출 여부가 화면사이즈에 영향을 미치게 합니다.
             containerView?.frame.size.height = keyboardEndFrame.origin.y
         }
     }
     
-    func chromeViewTapped(_ gesture: UIGestureRecognizer) {
-        if(gesture.state == UIGestureRecognizerState.ended) {
+    @objc func chromeViewTapped(_ gesture: UIGestureRecognizer) {
+        if(gesture.state == UIGestureRecognizer.State.ended) {
             presentedViewController.dismiss(animated: true, completion: nil)
         }
     }
@@ -186,7 +186,7 @@ final class PopupAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransi
             delay: 0,
             usingSpringWithDamping: 300.0,
             initialSpringVelocity: 5.0,
-            options: UIViewAnimationOptions.allowUserInteraction,
+            options: UIView.AnimationOptions.allowUserInteraction,
             animations: { () -> Void in
                 if self.isPresentation {
                     tedVC.view.alpha = 1.0
