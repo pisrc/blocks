@@ -107,6 +107,7 @@ public struct Segue {
             }
             
         case .presentModally(let animated):
+            destination.modalPresentationStyle = .fullScreen
             segue = PresentModallySegue(identifier: nil, source: source, destination: destination)
             if var segue = segue as? AnimatedSettable {
                 segue.animated = animated
